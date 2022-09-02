@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/profile"
+        android:id="@+id/profile"
+        android:checked="true"
+        android:icon="@drawable/ic_baseline_person_24"/>
+    <item android:title="@string/find_match"
+        android:checked="true"
+        android:id="@+id/findmatch"
+        android:icon="@drawable/ic_baseline_filter_list_24"/>
+    <item android:title="@string/chat"
+        android:id="@+id/chat"
+        android:checked="true"
+        android:icon="@drawable/ic_baseline_chat_24"/>
+</menu>

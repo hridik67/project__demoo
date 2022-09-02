@@ -1,0 +1,89 @@
+<resources>
+    <string name="facebook_app_id">1086970575252374</string>
+    <string name="fb_login_protocol_scheme">fb1086970575252374</string>
+    <string name="facebook_client_token">d3386d2af36bc60a70622ce2fb99a9fd</string>
+    <string name="app_name">Demo Project</string>
+    <string name="login_with_phone_number">LOGIN WITH PHONE NUMBER</string>
+    <string name="login_with_facebook">LOGIN WITH FACEBOOK</string>
+    <string name="by_tapping_log_in_you_agree_with_our_term_of_servicer_and_privacy_policy">By tapping Log In,You agree with our Term of Servicer and Privacy Policy</string>
+    <string name="todo">TODO</string>
+    <string name="hey">Hey!</string>
+    <string name="which_best_describe_you">Which best describe you?</string>
+    <string name="man">Man</string>
+    <string name="woman">Woman</string>
+    <string name="cis_woman">Cis woman</string>
+    <string name="trans_woman">Trans woman</string>
+    <string name="trans_man">Trans man</string>
+    <string name="non_binary">Non-binary</string>
+    <string name="cis_man">Cis man</string>
+    <string name="next">Next</string>
+    <string name="what_city_do_you_live_in">What city do you live in?</string>
+    <string name="and_just_to_triple_check">And just to triple-check</string>
+    <string name="next36">Next</string>
+    <string name="profile">Profile</string>
+    <string name="chat">Chat</string>
+    <string name="find_match">Find Match</string>
+    <string-array name="filtergender">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Gay</item>
+        <item>Lesbain</item>
+        <item>Bisexual</item>
+    </string-array>
+    <string-array name="gender">
+        <item>Others</item>
+        <item>Gay</item>
+        <item>Lesbain</item>
+        <item>Bisexual</item>
+    </string-array>
+    <string-array name="zodiac">
+        <item>Zodiac Sign</item>
+        <item>Aries</item>
+        <item>Taurus</item>
+        <item>Gemini</item>
+        <item>Cancer</item>
+        <item>Leo</item>
+        <item>Virgo</item>
+        <item>Libra</item>
+        <item>Scorpio</item>
+        <item>Sagittarius</item>
+        <item>Capricorn</item>
+        <item>Aquarius</item>
+        <item>Pisces</item>
+    </string-array>
+    <string-array name="education">
+        <item>Education</item>
+        <item>10+2 Passed</item>
+        <item>Bachelors</item>
+        <item>Master\'s</item>
+        <item>PhD</item>
+        <item>Diploma</item>
+    </string-array>
+    <string-array name="drinking">
+        <item>Drinking</item>
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+    <string-array name="pets">
+        <item>Pets</item>
+        <item>Dog</item>
+        <item>Cat</item>
+        <item>Hamster</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="religion">
+        <item>Religion</item>
+        <item>Hindu</item>
+        <item>Muslims</item>
+        <item>Christians</item>
+        <item>Sikhs</item>
+        <item>Buddhists</item>
+        <item>Jains</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name">Name</string>
+    <string name="please_wait_getting_the_users_details">please_wait_getting_the_users_details</string>
+    <string name="submit">Submit</string>
+    <string name="title_dynamicfeature">Module Title</string>
+</resources>
