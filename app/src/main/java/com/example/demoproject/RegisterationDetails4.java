@@ -161,15 +161,8 @@ public class RegisterationDetails4 extends AppCompatActivity {
                 String imageFileName = "JPEG" + timeStamp + "." + getFileExt(selectedImageUri);
                 ImageView imageView = new ImageView(RegisterationDetails4.this);
                 imageView.setImageResource(R.mipmap.ic_launcher);
-                if (flag< noofphotos ) {
-                    imageViews.get(flag-2).setImageURI(selectedImageUri);
-                    Toast.makeText(RegisterationDetails4.this, "Image succesfully uploaded", Toast.LENGTH_SHORT).show();
-                } else {
-                    imageViews.get(noofphotos - 1).setImageURI(selectedImageUri);
-                    Toast.makeText(RegisterationDetails4.this, "Image succesfully uploaded", Toast.LENGTH_SHORT).show();
-                    noofphotos++;
-                }
-                //uploadimage(selectedImageUri,imageView);
+                Toast.makeText(this, "Please wait 1-2 seconds while loading the image", Toast.LENGTH_SHORT).show();
+                uploadimage(selectedImageUri,imageView);
             }
         }
     }

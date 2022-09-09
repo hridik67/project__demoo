@@ -46,6 +46,10 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.io.IOException;
 import java.util.List;
@@ -59,11 +63,16 @@ public class RegisterationDetails7 extends AppCompatActivity {
     SeekBar agerange,distance;
     TextView agerange_view,distance_view;
     LocationRequest locationRequest;
+    static int filterage,filterdistance;
+    MaterialButton next7;
+    DatabaseReference reference;
+    static double Longitude,Lattitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registeration_details7);
+        reference = FirebaseDatabase.getInstance().getReference("UserProfileDetails");
         locationRequest = LocationRequest.create();
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         locationRequest.setInterval(5000);
@@ -71,10 +80,14 @@ public class RegisterationDetails7 extends AppCompatActivity {
         getCurrentLocation();
         agerange=findViewById(R.id.age);
         agerange_view=findViewById(R.id.age_view);
+        next7=findViewById(R.id.NEXT7);
+        filterage=18;
+        filterdistance=25;
         agerange.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 agerange_view.setText("18-"+Integer.toString(i));
+                filterage=i;
             }
 
             @Override
@@ -93,6 +106,7 @@ public class RegisterationDetails7 extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 distance_view.setText(Integer.toString(i)+"KM");
+                filterdistance=i;
             }
 
             @Override
@@ -116,6 +130,26 @@ public class RegisterationDetails7 extends AppCompatActivity {
         ArrayAdapter<String> myAdapter = new ArrayAdapter<>(RegisterationDetails7.this, R.layout.gender_dropdown_list,getResources().getStringArray(R.array.filtergender));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         filtergender.setAdapter(myAdapter);
+        next7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!(filtergender.getSelectedItem().toString().equals("Select"))){
+                    if (filterdistance==25){
+                        Toast.makeText(RegisterationDetails7.this, "Select the range above 25km", Toast.LENGTH_SHORT).show();
+                    } else {
+                        if (filterage==18){
+                            Toast.makeText(RegisterationDetails7.this, "Select age range between 18 to 75", Toast.LENGTH_SHORT).show();
+                        } else {
+                            sendDatatobackend();
+                            Intent intent = new Intent(RegisterationDetails7.this, GettingStartedScreen.class);
+                            startActivity(intent);
+                        }
+                    }
+                } else {
+                    Toast.makeText(RegisterationDetails7.this, "Select a gender preferrence", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
     }
 
@@ -192,7 +226,8 @@ public class RegisterationDetails7 extends AppCompatActivity {
                                         int index = locationResult.getLocations().size() - 1;
                                         double latitude = locationResult.getLocations().get(index).getLatitude();
                                         double longitude = locationResult.getLocations().get(index).getLongitude();
-                                        //currentlocation = locationResult.getLocations().get(index);
+                                        Lattitude=latitude;
+                                        Longitude=longitude;
                                         Toast.makeText(RegisterationDetails7.this, "Latitude: "+ latitude + "\n" + "Longitude: "+ longitude, Toast.LENGTH_SHORT).show();
                                         //getmatchesFirst();
 
@@ -272,6 +307,43 @@ public class RegisterationDetails7 extends AppCompatActivity {
         isEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
         return isEnabled;
 
+    }
+
+    private void sendDatatobackend() {
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+            @Override
+            public void onComplete(@NonNull Task<String> task) {
+
+                UserDetails userDetails=new UserDetails();
+                userDetails.setEmail(RegisterationDetails1.Email);
+                userDetails.setUsername(RegisterationDetails2.usernName);
+                userDetails.setName(RegisterationDetails3.Name);
+                userDetails.setDob(RegisterationDetails3.dob);
+                userDetails.setAge(RegisterationDetails3.age);
+                userDetails.setGender(RegisterationDetails3.gender);
+                userDetails.setNoOfImage(RegisterationDetails4.noofphotos);
+                userDetails.setWork(RegisterationDetails5.Work);
+                userDetails.setStudy(RegisterationDetails5.study);
+                userDetails.setDescription(RegisterationDetails5.Description);
+                userDetails.setHeight(RegisterationDetails6.Height);
+                userDetails.setZodiac(RegisterationDetails6.Zodiac);
+                userDetails.setEducation(RegisterationDetails6.Education);
+                userDetails.setDrinking(RegisterationDetails6.Drinking);
+                userDetails.setPets(RegisterationDetails6.Pets);
+                userDetails.setReligion(RegisterationDetails6.Religion);
+                userDetails.setLongitude(Longitude);
+                userDetails.setLattitude(Lattitude);
+                userDetails.setChattoken(task.getResult());
+                userDetails.setFilterGender(filtergender.getSelectedItem().toString());
+                userDetails.setAgeRange(filterage);
+                userDetails.setDistance(filterdistance);
+
+
+                String currentUid= FirebaseAuth.getInstance().getCurrentUser().getUid();
+                reference.child(currentUid).setValue(userDetails);
+                Toast.makeText(RegisterationDetails7.this, "Profile Created", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 

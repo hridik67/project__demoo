@@ -119,7 +119,7 @@ public class FacebookAuthActivity extends RegisterationScreen {
                     if (snapshot.exists()){
                         updateUI(user);
                         Toast.makeText(FacebookAuthActivity.this, snapshot.getKey().toString(), Toast.LENGTH_SHORT).show();
-                        Intent intent= new Intent(FacebookAuthActivity.this,FilterPageActivity.class);
+                        Intent intent= new Intent(FacebookAuthActivity.this,SwipingActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         finish();

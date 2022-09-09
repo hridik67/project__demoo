@@ -44,12 +44,12 @@ import java.util.Date;
 
 public class RegisterationDetails6 extends AppCompatActivity {
 
-    LinearLayout addingphoto;
-    private static final int REQUEST_IMAGE_CAPTURE = 2;
     MaterialButton next6;
     ImageView backbutton6;
     EditText height;
     Spinner zodiac,education,drinking,religion,pets;
+    static String Height,Zodiac,Education,Drinking,Religion,Pets;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,8 +87,38 @@ public class RegisterationDetails6 extends AppCompatActivity {
         next6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(RegisterationDetails6.this, RegisterationDetails7.class);
-                startActivity(intent);
+                if (height.getText().length()>0) {
+                    if (!(zodiac.getSelectedItem().toString().equals("Zodiac Sign"))) {
+                        if (!(education.getSelectedItem().toString().equals("Education"))) {
+                            if (!(drinking.getSelectedItem().toString().equals("Drinking"))) {
+                                if (!(pets.getSelectedItem().toString().equals("Pets"))) {
+                                    if (!(religion.getSelectedItem().toString().equals("Religion"))) {
+                                        Height=height.getText().toString();
+                                        Zodiac=zodiac.getSelectedItem().toString();
+                                        Education=education.getSelectedItem().toString();
+                                        Drinking=drinking.getSelectedItem().toString();
+                                        Pets=pets.getSelectedItem().toString();
+                                        Religion=religion.getSelectedItem().toString();
+                                        Intent intent = new Intent(RegisterationDetails6.this, RegisterationDetails7.class);
+                                        startActivity(intent);
+                                    } else {
+                                        Toast.makeText(RegisterationDetails6.this, "Select your religion to move furthur", Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                    Toast.makeText(RegisterationDetails6.this, "Select your option in Pets to move furthur", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                Toast.makeText(RegisterationDetails6.this, "Select your option in drinking to move furthur", Toast.LENGTH_SHORT).show();
+                            }
+                        } else{
+                            Toast.makeText(RegisterationDetails6.this, "Select your recent Educational Degree to move furthur", Toast.LENGTH_SHORT).show();
+                        }
+                    }else {
+                        Toast.makeText(RegisterationDetails6.this, "Select your Zodiac Sign to move furthur", Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    Toast.makeText(RegisterationDetails6.this, "Enter your height to move furthur", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -310,7 +309,7 @@ public class LoginPhoneActivity extends AppCompatActivity {
                         currentUser = FirebaseAuth.getInstance().getCurrentUser();
                         reference.child(currentUser.getUid()).child("chattoken").setValue(token);
                         Toast.makeText(LoginPhoneActivity.this, snapshot.getKey().toString(), Toast.LENGTH_SHORT).show();
-                        Intent intent= new Intent(LoginPhoneActivity.this,FilterPageActivity.class);
+                        Intent intent= new Intent(LoginPhoneActivity.this,SwipingActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         finish();

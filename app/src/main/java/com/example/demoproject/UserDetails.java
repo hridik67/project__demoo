@@ -1,9 +1,97 @@
 package com.example.demoproject;
 
 public class UserDetails {
-    private String Email,Name,Description,dob,gender,origin,Address,City,Country,username,password,chattoken;
-    private int age,noOfImage;
-    double Lattitude,Longitude;
+    private String Email,Name,Description,dob,gender,origin,Address,City,Country,username,password,chattoken,work,study,Height,Zodiac,Education,Drinking,Religion,Pets,filterGender;
+    private int age,noOfImage,ageRange;
+    double Lattitude,Longitude,distance;
+
+    public String getFilterGender() {
+        return filterGender;
+    }
+
+    public void setFilterGender(String filterGender) {
+        this.filterGender = filterGender;
+    }
+
+    public int getAgeRange() {
+        return ageRange;
+    }
+
+    public void setAgeRange(int ageRange) {
+        this.ageRange = ageRange;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+    public String getHeight() {
+        return Height;
+    }
+
+    public void setHeight(String height) {
+        Height = height;
+    }
+
+    public String getZodiac() {
+        return Zodiac;
+    }
+
+    public void setZodiac(String zodiac) {
+        Zodiac = zodiac;
+    }
+
+    public String getEducation() {
+        return Education;
+    }
+
+    public void setEducation(String education) {
+        Education = education;
+    }
+
+    public String getDrinking() {
+        return Drinking;
+    }
+
+    public void setDrinking(String drinking) {
+        Drinking = drinking;
+    }
+
+    public String getReligion() {
+        return Religion;
+    }
+
+    public void setReligion(String religion) {
+        Religion = religion;
+    }
+
+    public String getPets() {
+        return Pets;
+    }
+
+    public void setPets(String pets) {
+        Pets = pets;
+    }
+
+    public String getWork() {
+        return work;
+    }
+
+    public void setWork(String work) {
+        this.work = work;
+    }
+
+    public String getStudy() {
+        return study;
+    }
+
+    public void setStudy(String study) {
+        this.study = study;
+    }
 
     public String getChattoken() {
         return chattoken;

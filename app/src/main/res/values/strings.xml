@@ -24,6 +24,7 @@
     <string name="chat">Chat</string>
     <string name="find_match">Find Match</string>
     <string-array name="filtergender">
+        <item>Select</item>
         <item>Male</item>
         <item>Female</item>
         <item>Gay</item>

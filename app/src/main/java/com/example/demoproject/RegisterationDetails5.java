@@ -16,7 +16,7 @@ import com.google.android.material.button.MaterialButton;
 
 public class RegisterationDetails5 extends AppCompatActivity {
     int flag1=0,flag2=0,flag3=0,flag4=0,flag5=0,flag6=0,flag7=0,flag8=0,flag9=0,flag10=0;
-    static String origin=null;
+    static String Work,study,Description;
     ImageView backbutton5;
     EditText work,studied,description;
     MaterialButton NEXT5;
@@ -42,6 +42,9 @@ public class RegisterationDetails5 extends AppCompatActivity {
                 if(work.getText().length()>0){
                     if (studied.getText().length()>0){
                         if (description.getText().length()>20){
+                            Work=work.getText().toString();
+                            study=studied.getText().toString();
+                            Description=description.getText().toString();
                             Intent intent = new Intent(RegisterationDetails5.this, RegisterationDetails6.class);
                             startActivity(intent);
                         } else {

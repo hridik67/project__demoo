@@ -59,7 +59,7 @@ public class RegisterationScreen extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if (snapshot.exists()){
                         Toast.makeText(RegisterationScreen.this, snapshot.getKey().toString(), Toast.LENGTH_SHORT).show();
-                        Intent intent= new Intent(RegisterationScreen.this,FilterPageActivity.class);
+                        Intent intent= new Intent(RegisterationScreen.this,SwipingActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         finish();

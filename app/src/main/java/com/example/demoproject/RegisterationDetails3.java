@@ -57,20 +57,21 @@ public class RegisterationDetails3 extends AppCompatActivity {
     EditText name;
     DatePickerDialog.OnDateSetListener setListener;
     static int age;
-    static String dob;
     MaterialCardView dob_view;
     ImageView profile_view,add_pic;
+    static Uri imageUri;
     private static final int REQUEST_IMAGE_CAPTURE = 2;
     static int photo=0;
-    static String gender;
     StorageReference storage;
     MaterialButton Next;
+    static String Name,dob,gender;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        gender="Others";
         setContentView(R.layout.activity_registeration_details3);
         storage= FirebaseStorage.getInstance().getReference("UsersProfilePhotos");
         name=findViewById(R.id.namE);
@@ -112,7 +113,7 @@ public class RegisterationDetails3 extends AppCompatActivity {
         male.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gender="male";
+                gender="Male";
                 male.setTextColor(Color.parseColor("#E15454"));
                 male.setBackground(getDrawable(R.drawable.background_box_gender));
                 //male.setBackgroundResource(R.drawable.background_box_gener1);
@@ -125,7 +126,7 @@ public class RegisterationDetails3 extends AppCompatActivity {
         female.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gender="female";
+                gender="Female";
                 female.setTextColor(Color.parseColor("#E15454"));
                 female.setBackground(getDrawable(R.drawable.background_box_gender));
 
@@ -167,8 +168,9 @@ public class RegisterationDetails3 extends AppCompatActivity {
                             String yyuser = d1.substring(d1.length() - 4);
                             age = Integer.parseInt(yy) - Integer.parseInt(yyuser);
                             if (age >= 18) {
-                                if(gender!=null) {
+                                if(!(gender.equals("Others")) ) {
                                     dob = DateOfBirth.getText().toString();
+                                    Name=name.getText().toString();
                                     Intent intent = new Intent(RegisterationDetails3.this, RegisterationDetails4.class);
                                     startActivity(intent);
                                 } else{
@@ -231,6 +233,7 @@ public class RegisterationDetails3 extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Uri> task) {
                                 profile_view.setImageURI(imguri);
+                                imageUri=imguri;
                                 Toast.makeText(RegisterationDetails3.this, "Image succesfully uploaded", Toast.LENGTH_SHORT).show();
                                 photo=1;
 

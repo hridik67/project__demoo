@@ -419,7 +419,7 @@ public class RegisterationDetails8 extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<String> task) {
 
-                UserDetails userDetails=new UserDetails();
+                /*UserDetails userDetails=new UserDetails();
                 userDetails.setEmail(RegisterationDetails1.Email);
                 userDetails.setName(RegisterationDetails2.Name);
                 userDetails.setDescription(RegisterationDetails2.Description);
@@ -436,6 +436,8 @@ public class RegisterationDetails8 extends AppCompatActivity {
                 String currentUid= FirebaseAuth.getInstance().getCurrentUser().getUid();
                 reference.child(currentUid).setValue(userDetails);
                 Toast.makeText(RegisterationDetails8.this, "Profile Created", Toast.LENGTH_SHORT).show();
+
+                 */
             }
         });
     }

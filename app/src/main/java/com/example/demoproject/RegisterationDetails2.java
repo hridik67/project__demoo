@@ -19,7 +19,6 @@ public class RegisterationDetails2 extends AppCompatActivity {
     MaterialButton next;
     static String usernName;
 
-    static String Name=null,Description=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
