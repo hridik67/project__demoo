@@ -33,8 +33,8 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         imageView=findViewById(R.id.splashscreen);
-        splashScreenAnimation = AnimationUtils.loadAnimation(this,R.anim.splash_screen_animation);
-        imageView.setAnimation(splashScreenAnimation);
+        //splashScreenAnimation = AnimationUtils.loadAnimation(this,R.anim.splash_screen_animation);
+        //imageView.setAnimation(splashScreenAnimation);
 
         new Handler().postDelayed(new Runnable() {
             @Override

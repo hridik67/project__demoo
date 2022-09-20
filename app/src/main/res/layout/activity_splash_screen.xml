@@ -10,10 +10,11 @@
         android:id="@+id/splashscreen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitCenter"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/textlogo" />
+        android:src="@drawable/authenication_icon"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

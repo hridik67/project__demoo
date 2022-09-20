@@ -337,6 +337,8 @@ public class RegisterationDetails7 extends AppCompatActivity {
                 userDetails.setFilterGender(filtergender.getSelectedItem().toString());
                 userDetails.setAgeRange(filterage);
                 userDetails.setDistance(filterdistance);
+                userDetails.setHideage("no");
+                userDetails.setHidelocation("no");
 
 
                 String currentUid= FirebaseAuth.getInstance().getCurrentUser().getUid();

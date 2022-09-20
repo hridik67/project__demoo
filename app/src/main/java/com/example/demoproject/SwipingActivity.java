@@ -27,6 +27,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -69,6 +70,9 @@ import java.util.Objects;
 
 public class SwipingActivity extends AppCompatActivity {
 
+
+    boolean activity_state;
+
     final ArrayMap<Float,UserDetails> distance = new ArrayMap<>();
     final ArrayMap<Float,String> UserId = new ArrayMap<>();
     final ArrayList<String> matchlist=new ArrayList<>();
@@ -85,10 +89,10 @@ public class SwipingActivity extends AppCompatActivity {
     static int swipe_view_flag=0;
     int i;
     RelativeLayout swipe_view;
-    ImageView swipe_profile_photo,swipe_profile_rewind,heart,nope,like,backbuttonswipe2;
+    ImageView swipe_profile_photo,swipe_profile_rewind,heart,nope,like,backbuttonswipe2,chatbox;
     TextView swipe_profile_distance,swipe_profile_name,swipe_profile_age,nousertext,skip;
     TextView swipe_profile_name2,swipe_profile_age2,swipe_profile_study,swipe_profile_work,swipe_profile_description,swipe_profile_zodiac_sign,swipe_profile_favourite_drink,swipe_profile_pets;
-    CardView match_swipe;
+    CardView match_swipe,profilebutton;
     String choices;
 
     ImageView userimage,otheruserimage;
@@ -96,13 +100,32 @@ public class SwipingActivity extends AppCompatActivity {
     SliderView sliderView;
     Bitmap[] images;
 
-    ConstraintLayout swipe1,swipe2,swipe3;
-
+    ConstraintLayout swipe1,swipe3;
+    RelativeLayout swipe2;
+    ScrollView sv2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swiping);
+        chatbox=findViewById(R.id.chatbox);
+        chatbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SwipingActivity.this, ChatActivity.class);
+                startActivity(intent);
+            }
+        });
+        activity_state=true;
+        sv2=findViewById(R.id.sv2);
+        profilebutton=findViewById(R.id.profile);
+        profilebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SwipingActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
         skip=findViewById(R.id.skipped);
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,6 +225,7 @@ public class SwipingActivity extends AppCompatActivity {
                 swipe_profile_pets.setText(distance.valueAt(i).getPets());
                 swipe1.setVisibility(View.INVISIBLE);
                 swipe2.setVisibility(View.VISIBLE);
+                sv2.setVisibility(View.VISIBLE);
             }
         });
         match_swipe.setOnClickListener(new View.OnClickListener() {
@@ -209,6 +233,7 @@ public class SwipingActivity extends AppCompatActivity {
             public void onClick(View view) {
                 swipe1.setVisibility(View.VISIBLE);
                 swipe2.setVisibility(View.INVISIBLE);
+                sv2.setVisibility(View.INVISIBLE);
                 choices="heart";
                 swipeUpdate(choices);
                 //linearLayout.removeAllViews();
@@ -277,6 +302,7 @@ public class SwipingActivity extends AppCompatActivity {
                             swipe_view_flag=1;
                             swipe3.setVisibility(View.VISIBLE);
                             swipe2.setVisibility(View.INVISIBLE);
+                            sv2.setVisibility(View.INVISIBLE);
                             swipe1.setVisibility(View.INVISIBLE);
                             showmatcheduserPhoto(currentUser,UserId.valueAt(i));
                             SendNotification.Companion.send("Matched",distance.valueAt(i).getChattoken(),"You have matched check who it is",currentUser);
@@ -362,9 +388,13 @@ public class SwipingActivity extends AppCompatActivity {
         //Toast.makeText(SwipingActivity.this, String.valueOf(distance.size()), Toast.LENGTH_SHORT).show();
         if (j<distance.size()) {
             getPhots(UserId.valueAt(j).toString(),1,"swipe");
-            swipe_profile_distance.setText(distance.keyAt(j).toString() + " KM away");
+            //if (!(distance.valueAt(i).getHidelocation().equals("yes"))) {
+                swipe_profile_distance.setText(distance.keyAt(j).toString() + " KM away");
+            //}
             swipe_profile_name.setText(distance.valueAt(j).getName()+",");
-            swipe_profile_age.setText(String.valueOf(distance.valueAt(j).getAge()));
+            //if (!(distance.valueAt(i).getHideage().equals("yes"))) {
+                swipe_profile_age.setText(String.valueOf(distance.valueAt(j).getAge()));
+            //}
             //gender.setText(distance.valueAt(j).getGender());
             //description.setText("Bio-\n"+distance.valueAt(j).getDescription());
         } else{
@@ -618,61 +648,62 @@ public class SwipingActivity extends AppCompatActivity {
                         reference.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
-                                    if (!(dataSnapshot.getKey().toString().equals(currentUser.getUid()))) {
-                                        userDetails = dataSnapshot.getValue(UserDetails.class);
-                                        Toast.makeText(SwipingActivity.this, userDetails.getName(), Toast.LENGTH_SHORT).show();
-                                        if (matchlist.size()==0 || (!(matchlist.contains(dataSnapshot.getKey()))) ) {
+                                if (activity_state) {
+                                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                        if (!(dataSnapshot.getKey().toString().equals(currentUser.getUid()))) {
                                             userDetails = dataSnapshot.getValue(UserDetails.class);
-                                            assert userDetails != null;
-                                            if (userDetails.getAge() >= 18 && userDetails.getAge() <= currentuserDetails.getAgeRange() && userDetails.getGender().equals(currentuserDetails.getFilterGender())) {
-                                                Location startPoint = new Location("locationA");
-                                                startPoint.setLatitude(currentlocation.getLatitude());
-                                                startPoint.setLongitude(currentlocation.getLongitude());
+                                            Toast.makeText(SwipingActivity.this, userDetails.getName(), Toast.LENGTH_SHORT).show();
+                                            if (matchlist.size() == 0 || (!(matchlist.contains(dataSnapshot.getKey())))) {
+                                                userDetails = dataSnapshot.getValue(UserDetails.class);
+                                                assert userDetails != null;
+                                                if (userDetails.getAge() >= 18 && userDetails.getAge() <= currentuserDetails.getAgeRange() && userDetails.getGender().equals(currentuserDetails.getFilterGender())) {
+                                                    Location startPoint = new Location("locationA");
+                                                    startPoint.setLatitude(currentlocation.getLatitude());
+                                                    startPoint.setLongitude(currentlocation.getLongitude());
 
-                                                Location endPoint = new Location("locationA");
-                                                endPoint.setLatitude(userDetails.getLattitude());
-                                                endPoint.setLongitude(userDetails.getLongitude());
+                                                    Location endPoint = new Location("locationA");
+                                                    endPoint.setLatitude(userDetails.getLattitude());
+                                                    endPoint.setLongitude(userDetails.getLongitude());
 
-                                                float dist = startPoint.distanceTo(endPoint) / 1000;
-                                                distance.put(dist, userDetails);
-                                                UserId.put(dist, dataSnapshot.getKey().toString());
-                                                if (i == 0) {
-                                                    update(i);
-                                                    swipe_view.setVisibility(View.VISIBLE);
-                                                    nope.setVisibility(View.VISIBLE);
-                                                    heart.setVisibility(View.VISIBLE);
-                                                    like.setVisibility(View.VISIBLE);
+                                                    float dist = startPoint.distanceTo(endPoint) / 1000;
+                                                    distance.put(dist, userDetails);
+                                                    UserId.put(dist, dataSnapshot.getKey().toString());
+                                                    if (i == 0) {
+                                                        update(i);
+                                                        swipe_view.setVisibility(View.VISIBLE);
+                                                        nope.setVisibility(View.VISIBLE);
+                                                        heart.setVisibility(View.VISIBLE);
+                                                        like.setVisibility(View.VISIBLE);
+                                                    }
+                                                    //Log.e("infofuck",distance.toString());
+                                                    Toast.makeText(SwipingActivity.this, "hello -" + distance.size(), Toast.LENGTH_SHORT).show();
+
+
+                                                } else {
+                                                    Toast.makeText(SwipingActivity.this, "no data was found in according to your filters", Toast.LENGTH_SHORT).show();
+                                                    //text.setText("no data was found in according to your filters");
                                                 }
-                                                //Log.e("infofuck",distance.toString());
-                                                Toast.makeText(SwipingActivity.this, "hello -" + distance.size(), Toast.LENGTH_SHORT).show();
-
-
-                                            } else {
-                                                Toast.makeText(SwipingActivity.this, "no data was found in according to your filters", Toast.LENGTH_SHORT).show();
-                                                //text.setText("no data was found in according to your filters");
                                             }
+
+
                                         }
+
+                                    }
+                                    if (distance.size() == 0 && UserId.size() == 0) {
+                                        nousertext.setVisibility(View.VISIBLE);
+                                        //scrollView.setVisibility(View.INVISIBLE);
+                                        swipe_view.setVisibility(View.INVISIBLE);
+                                        nope.setVisibility(View.INVISIBLE);
+                                        heart.setVisibility(View.INVISIBLE);
+                                        like.setVisibility(View.INVISIBLE);
+                                        Toast.makeText(SwipingActivity.this, "No User was found according to your filters", Toast.LENGTH_SHORT).show();
+                                        //text.setText("No User was found according to your filters");
+                                    } else {
+                                        //getData.setDistance(distance);
+                                        //getData.setUserId(UserId);
 
 
                                     }
-
-                                }
-                                if (distance.size()==0 && UserId.size()==0){
-                                    nousertext.setVisibility(View.VISIBLE);
-                                    //scrollView.setVisibility(View.INVISIBLE);
-                                    swipe_view.setVisibility(View.INVISIBLE);
-                                    nope.setVisibility(View.INVISIBLE);
-                                    heart.setVisibility(View.INVISIBLE);
-                                    like.setVisibility(View.INVISIBLE);
-                                    Toast.makeText(SwipingActivity.this, "No User was found according to your filters", Toast.LENGTH_SHORT).show();
-                                    //text.setText("No User was found according to your filters");
-                                } else {
-                                    //getData.setDistance(distance);
-                                    //getData.setUserId(UserId);
-
-
-
                                 }
 
 
@@ -691,7 +722,6 @@ public class SwipingActivity extends AppCompatActivity {
         } else{
             Toast.makeText(SwipingActivity.this, "You are unauthorized", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     @Override
@@ -700,10 +730,35 @@ public class SwipingActivity extends AppCompatActivity {
             swipe_view_flag=0;
             swipe1.setVisibility(View.VISIBLE);
             swipe2.setVisibility(View.INVISIBLE);
+            sv2.setVisibility(View.INVISIBLE);
             swipe3.setVisibility(View.INVISIBLE);
         }
         else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        activity_state=true;
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        activity_state=false;
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        activity_state=false;
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        activity_state=false;
+        super.onDestroy();
     }
 }

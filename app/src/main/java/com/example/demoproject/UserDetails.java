@@ -1,9 +1,25 @@
 package com.example.demoproject;
 
 public class UserDetails {
-    private String Email,Name,Description,dob,gender,origin,Address,City,Country,username,password,chattoken,work,study,Height,Zodiac,Education,Drinking,Religion,Pets,filterGender;
-    private int age,noOfImage,ageRange;
-    double Lattitude,Longitude,distance;
+    private String Email,Name,Description,dob,gender,origin,Address,City,Country,username,password,chattoken,work,study,Height,Zodiac,Education,Drinking,Religion,Pets,filterGender,hidelocation,hideage;
+    private int age,noOfImage,ageRange,distance;
+    double Lattitude,Longitude;
+
+    public String getHidelocation() {
+        return hidelocation;
+    }
+
+    public void setHidelocation(String hidelocation) {
+        this.hidelocation = hidelocation;
+    }
+
+    public String getHideage() {
+        return hideage;
+    }
+
+    public void setHideage(String hideage) {
+        this.hideage = hideage;
+    }
 
     public String getFilterGender() {
         return filterGender;
@@ -21,11 +37,11 @@ public class UserDetails {
         this.ageRange = ageRange;
     }
 
-    public double getDistance() {
+    public int getDistance() {
         return distance;
     }
 
-    public void setDistance(double distance) {
+    public void setDistance(int distance) {
         this.distance = distance;
     }
 

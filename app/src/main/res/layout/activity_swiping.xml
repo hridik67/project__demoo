@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
+
         <ProgressBar
             android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
@@ -24,8 +25,8 @@
             android:id="@+id/swipe_profile_view"
             android:layout_width="300dp"
             android:layout_height="500dp"
-            android:visibility="invisible"
             android:background="@drawable/background_box2"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +52,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
-                    android:src="@drawable/photo1" />
+                    android:src="@drawable/photo1"
+                    android:contentDescription="TODO" />
 
                 <ImageView
                     android:id="@+id/swipe_profile_rewind"
@@ -147,6 +149,14 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.05"
             app:srcCompat="@drawable/ic_baseline_chat_24" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/swipe_profile_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="-100dp"
+            >
 
         <ImageView
             android:id="@+id/nope"
@@ -164,10 +174,11 @@
 
         <ImageView
             android:id="@+id/heart"
+            android:visibility="invisible"
             android:layout_width="150dp"
             android:layout_height="70dp"
             android:scaleType="fitXY"
-            android:visibility="invisible"
+            android:layout_alignParentRight="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1"
@@ -178,16 +189,15 @@
 
         <ImageView
             android:id="@+id/like"
+            android:visibility="invisible"
             android:layout_width="150dp"
             android:layout_height="70dp"
             android:scaleType="fitCenter"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.9"
+            android:layout_centerInParent="true"
             app:srcCompat="@drawable/like" />
+
+
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/nousertext"
@@ -209,11 +219,23 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/swipe2"
+    <ScrollView
+        android:id="@+id/sv2"
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        >
+    <RelativeLayout
+        android:id="@+id/swipe2"
         android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="100dp"
         >
 
         <com.smarteist.autoimageslider.SliderView
@@ -232,34 +254,26 @@
             app:sliderIndicatorSelectedColor="#5A5A5A"
             app:sliderIndicatorUnselectedColor="#FFF"
             app:sliderScrollTimeInSec="2"
-            app:sliderStartAutoCycle="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0"
-            />
+            app:sliderStartAutoCycle="true" />
+
+
         <ImageView
             android:id="@+id/backbuttonswipe2"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.05"
-            app:layout_constraintVertical_bias="0.05"
-
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
             />
+
+
         <RelativeLayout
+            android:id="@+id/rl"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
+            android:layout_alignBottom="@id/image_slider"
+            android:layout_marginBottom="-40dp"
             >
 
             <TextView
@@ -281,14 +295,15 @@
                 android:textSize="22dp"
                 android:layout_alignBaseline="@id/swipe_profile_name2"
                 android:layout_toEndOf="@id/swipe_profile_name2"
-            />
+                />
             <androidx.cardview.widget.CardView
                 android:id="@+id/match_swipe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="20dp"
                 android:layout_alignParentEnd="true"
-            >
+                android:layout_marginRight="20dp"
+                >
                 <TextView
                     android:layout_width="150dp"
                     android:layout_height="40dp"
@@ -298,10 +313,9 @@
                     android:textStyle="bold"
                     android:textSize="20dp"
                     android:gravity="center"
-                />
+                    />
             </androidx.cardview.widget.CardView>
         </RelativeLayout>
-
 
         <TextView
             android:id="@+id/swipe_profile_study"
@@ -309,70 +323,59 @@
             android:layout_height="wrap_content"
             android:text="Studied at NIFT,Delhi"
             android:textSize="22dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.58"
-            app:layout_constraintHorizontal_bias="0.1"
+            android:layout_alignBottom="@id/rl"
+            android:layout_marginBottom="-80dp"
+            android:layout_marginStart="20dp"
             />
         <TextView
             android:id="@+id/swipe_profile_work"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Works at Kaaya fashion"
+            android:text="Works at Kaaya fashion "
             android:textSize="22dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.63"
-            app:layout_constraintHorizontal_bias="0.1"
+            android:layout_alignBottom="@id/swipe_profile_study"
+            android:layout_marginBottom="-40dp"
+            android:layout_marginStart="20dp"
+
             />
+
         <RelativeLayout
+            android:id="@+id/rl2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.78"
-            app:layout_constraintHorizontal_bias="0.2"
-            >
+            android:layout_alignBottom="@id/swipe_profile_work"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="-150dp">
+
             <TextView
                 android:id="@+id/swipe_profile_aboutme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="About me"
-                android:layout_marginStart="20dp"
                 android:textColor="@color/black"
                 android:textSize="30dp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/swipe_profile_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="20dp"
                 android:text="Remember that not getting what you want is sometimes a wonderful stroke of love"
                 android:textColor="@color/common_google_signin_btn_text_light_default"
-                android:textStyle="bold"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
                 android:textSize="22dp"
-                android:layout_marginTop="50dp"
-                />
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/rl3"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintVertical_bias="0.85"
+            android:layout_alignBottom="@id/rl2"
+            android:layout_marginBottom="-40dp"
+            android:layout_marginStart="20dp"
             >
 
             <TextView
@@ -382,7 +385,7 @@
                 android:layout_alignParentBottom="true"
                 android:text="Zodiac Sign - "
                 android:textSize="22dp"
-            />
+                />
 
             <TextView
                 android:id="@+id/swipe_profile_zodiac_sign"
@@ -399,12 +402,10 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintVertical_bias="0.90"
+            android:id="@+id/rl4"
+            android:layout_alignBottom="@id/rl3"
+            android:layout_marginBottom="-40dp"
+            android:layout_marginStart="20dp"
             >
 
             <TextView
@@ -428,16 +429,13 @@
                 android:layout_toEndOf="@id/swipe_favourite"
                 />
         </RelativeLayout>
-
         <RelativeLayout
+            android:id="@+id/rl5"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintVertical_bias="0.95"
+            android:layout_alignBottom="@id/rl4"
+            android:layout_marginBottom="-40dp"
+            android:layout_marginStart="20dp"
             >
 
             <TextView
@@ -446,8 +444,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:text="Pets - "
-                android:textSize="22dp"
-                />
+                android:textSize="22dp" />
 
             <TextView
                 android:id="@+id/swipe_profile_pets"
@@ -462,9 +459,33 @@
                 />
         </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignBottom="@id/rl5"
+            android:layout_marginBottom="-40dp"
+            android:layout_marginStart="20dp"
+            >
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="Pets - "
+                android:textSize="22dp" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dog"
+                android:textSize="22dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                />
+        </RelativeLayout>
+
+    </RelativeLayout>
+    </ScrollView>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
