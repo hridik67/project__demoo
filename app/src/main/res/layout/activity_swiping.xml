@@ -201,13 +201,13 @@
 
         <TextView
             android:id="@+id/nousertext"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:layout_gravity="center"
-            android:background="@drawable/gradient"
+            android:background="@drawable/add_photo_layout"
             android:gravity="center"
             android:padding="20dp"
-            android:text="No further users to show according to filters"
+            android:text="Out of matches"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:visibility="invisible"
@@ -216,6 +216,34 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/nousertextbutton"
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/nousertext"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/gradient"
+            android:gravity="center"
+            android:text="Go to filters Page"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            />
+        </androidx.cardview.widget.CardView>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -301,8 +329,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="20dp"
-                android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@id/swipe_profile_age2"
                 android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
                 >
                 <TextView
                     android:layout_width="150dp"

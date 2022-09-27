@@ -85,7 +85,6 @@ public class VideoCallOutgoing extends AppCompatActivity {
         }
         sendCallInvitation();
         checkResponse();
-
     }
 
     private void checkResponse() {
@@ -125,8 +124,12 @@ public class VideoCallOutgoing extends AppCompatActivity {
             JitsiMeetConferenceOptions options= new JitsiMeetConferenceOptions.Builder()
                     .setServerURL(new URL("https://meet.jit.si"))
                     .setRoom(key)
+                    //.setFeatureFlag("PendingIntent", PendingIntent.FLAG_IMMUTABLE)
                     .setWelcomePageEnabled(false)
+
                     .build();
+            //PendingIntent.get
+            //PendingIntent pendingIntent = PendingIntent.getActivity(this, alarmID, JitsiMeetOngoingConferenceService, PendingIntent.FLAG_IMMUTABLE);
             JitsiMeetActivity.launch(VideoCallOutgoing.this,options);
             finish();
 
@@ -134,6 +137,7 @@ public class VideoCallOutgoing extends AppCompatActivity {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
+
 
 
     private void sendCallInvitation() {

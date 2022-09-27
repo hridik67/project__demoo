@@ -50,7 +50,7 @@ import timber.log.Timber;
 public class SingleUserChatActivity extends AppCompatActivity {
     TextView receiverUserName;
     EditText chatinput;
-    ImageView sendMessage,vcbtn;
+    ImageView sendMessage,vcbtn,backbuttonsinglechat;
     RecyclerView chatrecycleview;
 
     private ChatMessage chatMessage;
@@ -78,6 +78,13 @@ public class SingleUserChatActivity extends AppCompatActivity {
         sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         setContentView(R.layout.activity_single_user_chat);
         storage= FirebaseStorage.getInstance().getReference("UsersProfilePhotos");
+        backbuttonsinglechat=findViewById(R.id.backbuttonsinglechat);
+        backbuttonsinglechat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         reciever_photo=findViewById(R.id.reciever_photo);
         receiverUserName=findViewById(R.id.otheruserName);
         chatrecycleview=findViewById(R.id.chatrecycleview);

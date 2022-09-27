@@ -94,6 +94,7 @@ public class SwipingActivity extends AppCompatActivity {
     TextView swipe_profile_name2,swipe_profile_age2,swipe_profile_study,swipe_profile_work,swipe_profile_description,swipe_profile_zodiac_sign,swipe_profile_favourite_drink,swipe_profile_pets;
     CardView match_swipe,profilebutton;
     String choices;
+    CardView nousertextbutton;
 
     ImageView userimage,otheruserimage;
 
@@ -166,6 +167,14 @@ public class SwipingActivity extends AppCompatActivity {
             }
         });
         nousertext=findViewById(R.id.nousertext);
+        nousertextbutton=findViewById(R.id.nousertextbutton);
+        nousertextbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SwipingActivity.this, FilterActivity2.class);
+                startActivity(intent);
+            }
+        });
         heart=findViewById(R.id.heart);
         like=findViewById(R.id.like);
         nope=findViewById(R.id.nope);
@@ -388,18 +397,26 @@ public class SwipingActivity extends AppCompatActivity {
         //Toast.makeText(SwipingActivity.this, String.valueOf(distance.size()), Toast.LENGTH_SHORT).show();
         if (j<distance.size()) {
             getPhots(UserId.valueAt(j).toString(),1,"swipe");
-            //if (!(distance.valueAt(i).getHidelocation().equals("yes"))) {
+            //Toast.makeText(this, distance.valueAt(j).getHidelocation().toString(), Toast.LENGTH_SHORT).show();
+            if (distance.valueAt(i).getHidelocation().equals("yes")) {
+                swipe_profile_distance.setText("");
+            }
+            else if ((distance.valueAt(i).getHidelocation().equals("no"))) {
                 swipe_profile_distance.setText(distance.keyAt(j).toString() + " KM away");
-            //}
+            }
             swipe_profile_name.setText(distance.valueAt(j).getName()+",");
-            //if (!(distance.valueAt(i).getHideage().equals("yes"))) {
+            if (distance.valueAt(i).getHideage().equals("yes")) {
+                swipe_profile_age.setText("");
+            }
+            else if (distance.valueAt(i).getHideage().equals("no")) {
                 swipe_profile_age.setText(String.valueOf(distance.valueAt(j).getAge()));
-            //}
+            }
             //gender.setText(distance.valueAt(j).getGender());
             //description.setText("Bio-\n"+distance.valueAt(j).getDescription());
         } else{
 
             nousertext.setVisibility(View.VISIBLE);
+            nousertextbutton.setVisibility(View.VISIBLE);
             //scrollView.setVisibility(View.INVISIBLE);
             swipe_view.setVisibility(View.INVISIBLE);
             nope.setVisibility(View.INVISIBLE);
@@ -524,7 +541,11 @@ public class SwipingActivity extends AppCompatActivity {
                                         double latitude = locationResult.getLocations().get(index).getLatitude();
                                         double longitude = locationResult.getLocations().get(index).getLongitude();
                                         currentlocation=locationResult.getLocations().get(index);
-                                        Toast.makeText(SwipingActivity.this, "Latitude: "+ latitude + "\n" + "Longitude: "+ longitude, Toast.LENGTH_SHORT).show();
+                                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("UserProfileDetails");
+                                        String currentUid= FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                        reference.child(currentUid).child("lattitude").setValue(latitude);
+                                        reference.child(currentUid).child("longitude").setValue(longitude);
+                                        //Toast.makeText(SwipingActivity.this, "Latitude: "+ latitude + "\n" + "Longitude: "+ longitude, Toast.LENGTH_SHORT).show();
                                         getmatchesFirst();
 
 
@@ -622,12 +643,12 @@ public class SwipingActivity extends AppCompatActivity {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         //Toast.makeText(context, dataSnapshot.getValue().toString()+dataSnapshot.getKey(), Toast.LENGTH_SHORT).show();
                         if (Objects.requireNonNull(dataSnapshot.getValue()).toString().equals("Matched")) {
-                            Toast.makeText(SwipingActivity.this, dataSnapshot.getKey(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(SwipingActivity.this, dataSnapshot.getKey(), Toast.LENGTH_SHORT).show();
                             matchlist.add(dataSnapshot.getKey());
                         }
                     }
                 }
-                Toast.makeText(SwipingActivity.this, String.valueOf(matchlist.size()), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(SwipingActivity.this, String.valueOf(matchlist.size()), Toast.LENGTH_SHORT).show();
                 Toast.makeText(SwipingActivity.this, "Please wait for a second or two loading the profiles as per your details", Toast.LENGTH_SHORT).show();
                 backendData();
 
@@ -652,7 +673,7 @@ public class SwipingActivity extends AppCompatActivity {
                                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                                         if (!(dataSnapshot.getKey().toString().equals(currentUser.getUid()))) {
                                             userDetails = dataSnapshot.getValue(UserDetails.class);
-                                            Toast.makeText(SwipingActivity.this, userDetails.getName(), Toast.LENGTH_SHORT).show();
+                                            //Toast.makeText(SwipingActivity.this, userDetails.getName(), Toast.LENGTH_SHORT).show();
                                             if (matchlist.size() == 0 || (!(matchlist.contains(dataSnapshot.getKey())))) {
                                                 userDetails = dataSnapshot.getValue(UserDetails.class);
                                                 assert userDetails != null;
@@ -676,7 +697,7 @@ public class SwipingActivity extends AppCompatActivity {
                                                         like.setVisibility(View.VISIBLE);
                                                     }
                                                     //Log.e("infofuck",distance.toString());
-                                                    Toast.makeText(SwipingActivity.this, "hello -" + distance.size(), Toast.LENGTH_SHORT).show();
+                                                    //Toast.makeText(SwipingActivity.this, "hello -" + distance.size(), Toast.LENGTH_SHORT).show();
 
 
                                                 } else {
@@ -691,6 +712,7 @@ public class SwipingActivity extends AppCompatActivity {
                                     }
                                     if (distance.size() == 0 && UserId.size() == 0) {
                                         nousertext.setVisibility(View.VISIBLE);
+                                        nousertextbutton.setVisibility(View.VISIBLE);
                                         //scrollView.setVisibility(View.INVISIBLE);
                                         swipe_view.setVisibility(View.INVISIBLE);
                                         nope.setVisibility(View.INVISIBLE);

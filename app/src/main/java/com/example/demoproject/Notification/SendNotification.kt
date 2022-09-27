@@ -22,9 +22,13 @@ class SendNotification {
             try {
                 val response = RetrofitInstance.api.postNotification(notification)
                 if(response.isSuccessful) {
+
+                    Log.d("fuck", "Response: ${Gson().toJson(response)}")
                 } else {
+                    Log.e("fuck", response.errorBody().toString())
                 }
             } catch(e: Exception) {
+                Log.e("fuck", e.toString())
             }
         }
     }

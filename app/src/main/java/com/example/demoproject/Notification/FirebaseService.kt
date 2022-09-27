@@ -4,18 +4,17 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.NotificationManager.IMPORTANCE_HIGH
 import android.app.PendingIntent
-import android.app.PendingIntent.FLAG_ONE_SHOT
+import android.app.PendingIntent.FLAG_IMMUTABLE
+import android.app.PendingIntent.FLAG_MUTABLE
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Build
 import android.util.Log
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
+import com.example.demoproject.ChatActivity
 import com.example.demoproject.Chats.VideoCallinComing
-import com.example.demoproject.FilterPageActivity
 import com.example.demoproject.HomePageActivity
 import com.example.demoproject.R
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -44,11 +43,11 @@ class FirebaseService : FirebaseMessagingService() {
             }
 
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            val pendingIntent = PendingIntent.getActivity(this, 0, intent, FLAG_ONE_SHOT)
+            val pendingIntent = PendingIntent.getActivity(this, 0, intent, FLAG_IMMUTABLE)
             val notification = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle(message.data["title"])
                 .setContentText(message.data["message"])
-                .setSmallIcon(R.drawable.ic_baseline_chat_24)
+                .setSmallIcon(R.drawable.ic_baseline_videocam_24)
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent)
                 .build()
@@ -57,7 +56,7 @@ class FirebaseService : FirebaseMessagingService() {
         }
         else {
             Log.e("messfuck", message.data["message"].toString())
-            val intent = Intent(this, HomePageActivity::class.java)
+            val intent = Intent(this, ChatActivity::class.java)
             val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             val notificationID = Random.nextInt()
 
@@ -66,7 +65,7 @@ class FirebaseService : FirebaseMessagingService() {
             }
 
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            val pendingIntent = PendingIntent.getActivity(this, 0, intent, FLAG_ONE_SHOT)
+            val pendingIntent = PendingIntent.getActivity(this, 0, intent, FLAG_IMMUTABLE)
             val notification = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle(message.data["title"])
                 .setContentText(message.data["message"])
@@ -90,14 +89,3 @@ class FirebaseService : FirebaseMessagingService() {
         notificationManager.createNotificationChannel(channel)
     }
 }
-
-
-
-
-
-
-
-
-
-
-

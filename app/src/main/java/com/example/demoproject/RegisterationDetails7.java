@@ -332,6 +332,8 @@ public class RegisterationDetails7 extends AppCompatActivity {
                 userDetails.setPets(RegisterationDetails6.Pets);
                 userDetails.setReligion(RegisterationDetails6.Religion);
                 userDetails.setLongitude(Longitude);
+                userDetails.setHidelocation("no");
+                userDetails.setHideage("no");
                 userDetails.setLattitude(Lattitude);
                 userDetails.setChattoken(task.getResult());
                 userDetails.setFilterGender(filtergender.getSelectedItem().toString());

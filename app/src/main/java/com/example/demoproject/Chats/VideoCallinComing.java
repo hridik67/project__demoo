@@ -3,6 +3,7 @@ package com.example.demoproject.Chats;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -25,7 +26,10 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import org.jitsi.meet.sdk.JitsiMeetActivity;
+import org.jitsi.meet.sdk.JitsiMeetActivityDelegate;
+import org.jitsi.meet.sdk.JitsiMeetActivityInterface;
 import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
+import org.jitsi.meet.sdk.JitsiMeetOngoingConferenceService;
 
 import java.io.File;
 import java.io.IOException;
@@ -124,9 +128,13 @@ public class VideoCallinComing extends AppCompatActivity {
         try {
             JitsiMeetConferenceOptions options= new JitsiMeetConferenceOptions.Builder()
                     .setServerURL(new URL("https://meet.jit.si"))
+
                     .setRoom(sender_name+reciever_uid)
+
                     .setWelcomePageEnabled(false)
+
                     .build();
+
             JitsiMeetActivity.launch(VideoCallinComing.this,options);
             finish();
 

@@ -5,6 +5,7 @@ public class UserDetails {
     private int age,noOfImage,ageRange,distance;
     double Lattitude,Longitude;
 
+
     public String getHidelocation() {
         return hidelocation;
     }

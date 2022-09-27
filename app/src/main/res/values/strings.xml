@@ -3,7 +3,7 @@
     <string name="facebook_app_id">1086970575252374</string>
     <string name="fb_login_protocol_scheme">fb1086970575252374</string>
     <string name="facebook_client_token">d3386d2af36bc60a70622ce2fb99a9fd</string>
-    <string name="app_name">Demo Project</string>
+    <string name="app_name">We Kabbu</string>
     <string name="login_with_phone_number">LOGIN WITH PHONE NUMBER</string>
     <string name="login_with_facebook">LOGIN WITH FACEBOOK</string>
     <string name="by_tapping_log_in_you_agree_with_our_term_of_servicer_and_privacy_policy">By tapping Log In,You agree with our Term of Servicer and Privacy Policy</string>
