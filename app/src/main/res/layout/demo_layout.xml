@@ -130,7 +130,7 @@
 
 
 
-
+<!--
 
    <com.smarteist.autoimageslider.SliderView
         android:id="@+id/image_slider"
@@ -183,16 +183,16 @@
             android:layout_alignParentBottom="true"
             android:text="Mathew,"
             android:textColor="@color/black"
-            android:textSize="22dp"
+            android:textSize="18sp"
             android:layout_marginStart="20dp"
-            android:textStyle="bold" />
+             />
 
         <TextView
             android:id="@+id/swipe_profile_age2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" 23"
-            android:textSize="22dp"
+            android:textSize="18sp"
             android:layout_alignBaseline="@id/swipe_profile_name2"
             android:layout_toEndOf="@id/swipe_profile_name2"
             />
@@ -209,7 +209,7 @@
                 android:background="@drawable/gradient"
                 android:text="edit profile"
                 android:textColor="@color/white"
-                android:textStyle="bold"
+                
                 android:textSize="20dp"
                 android:gravity="center"
                 />
@@ -222,7 +222,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Studied at NIFT,Delhi"
-        android:textSize="22dp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/rl0"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="-30dp"
@@ -234,7 +234,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Works at Kaaya fashion"
-        android:textSize="22dp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/swipe_profile_study"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="-30dp"
@@ -256,7 +256,7 @@
             android:text="About me"
             android:textColor="@color/black"
             android:textSize="30dp"
-            android:textStyle="bold"
+            
             />
         <TextView
             android:id="@+id/swipe_profile_description"
@@ -264,9 +264,9 @@
             android:layout_height="wrap_content"
             android:text="Remember that not getting what you want is sometimes a wonderful stroke of love"
             android:textColor="@color/common_google_signin_btn_text_light_default"
-            android:textStyle="bold"
+            
             android:layout_marginEnd="20dp"
-            android:textSize="22dp"
+            android:textSize="18sp"
             android:layout_marginTop="50dp"
             />
 
@@ -288,7 +288,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:text="Zodiac Sign - "
-            android:textSize="22dp"
+            android:textSize="18sp"
             />
 
         <TextView
@@ -296,9 +296,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Libra"
-            android:textSize="22dp"
+            android:textSize="18sp"
             android:textColor="@color/black"
-            android:textStyle="bold"
+            
             android:layout_alignBaseline="@id/swipe_zodiac"
             android:layout_toEndOf="@id/swipe_zodiac"
             />
@@ -319,7 +319,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:text="Drinking - "
-            android:textSize="22dp"
+            android:textSize="18sp"
             />
 
         <TextView
@@ -327,9 +327,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Yes"
-            android:textSize="22dp"
+            android:textSize="18sp"
             android:textColor="@color/black"
-            android:textStyle="bold"
+            
             android:layout_alignBaseline="@id/swipe_favourite"
             android:layout_toEndOf="@id/swipe_favourite"
             />
@@ -349,7 +349,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:text="Pets - "
-            android:textSize="22dp"
+            android:textSize="18sp"
             />
 
         <TextView
@@ -357,9 +357,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Dog"
-            android:textSize="22dp"
+            android:textSize="18sp"
             android:textColor="@color/black"
-            android:textStyle="bold"
+            
             android:layout_alignBaseline="@id/swipe_pet"
             android:layout_toEndOf="@id/swipe_pet"
             />
@@ -394,7 +394,7 @@
         android:text="Edit Profile"
         android:textColor="@color/black"
         android:textSize="40sp"
-        android:textStyle="bold"
+        
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.22"
@@ -435,11 +435,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Change profile photo"
-        android:textSize="22dp"
+        android:textSize="18sp"
         android:layout_alignParentEnd="true"
         android:layout_marginVertical="30dp"
         android:layout_marginEnd="20dp"
-        android:textStyle="bold"
+        
         />
 
         <View
@@ -475,7 +475,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Name"
-            android:textSize="22dp"
+            android:textSize="18sp"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
@@ -485,10 +485,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Priya arora"
-            android:textSize="22dp"
+            android:textSize="18sp"
             android:layout_centerHorizontal="true"
             android:textColor="@color/black"
-            android:textStyle="bold"
+            
             />
 
 
@@ -510,7 +510,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Username"
-            android:textSize="22dp"
+            android:textSize="18sp"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
@@ -520,10 +520,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Priya arora"
-            android:textSize="22dp"
+            android:textSize="18sp"
             android:layout_centerHorizontal="true"
             android:textColor="@color/black"
-            android:textStyle="bold"
+            
             />
 
     </RelativeLayout>
@@ -544,7 +544,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Age"
-        android:textSize="22dp"
+        android:textSize="18sp"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="20dp"
@@ -556,8 +556,8 @@
             android:layout_centerHorizontal="true"
             android:text="23"
             android:textColor="@color/black"
-            android:textSize="22dp"
-            android:textStyle="bold"
+            android:textSize="18sp"
+            
             tools:ignore="TouchTargetSizeCheck" />
     </RelativeLayout>
 
@@ -578,7 +578,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Work"
-            android:textSize="22dp"
+            android:textSize="18sp"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
@@ -588,10 +588,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Kaaya Fashion"
-            android:textSize="22dp"
+            android:textSize="18sp"
             android:layout_centerHorizontal="true"
             android:textColor="@color/black"
-            android:textStyle="bold"
+            
             />
     </RelativeLayout>
 
@@ -611,7 +611,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Education"
-            android:textSize="22dp"
+            android:textSize="18sp"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
@@ -621,11 +621,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="NIFT, Delhi"
-            android:textSize="22dp"
+            android:textSize="18sp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:textColor="@color/black"
-            android:textStyle="bold"
+            
             />
         <View
             android:layout_width="match_parent"
@@ -646,7 +646,7 @@
         android:layout_height="wrap_content"
         android:text="Change Photos"
         android:textColor="@color/black"
-        android:textSize="22sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.09"
@@ -835,7 +835,7 @@
                 android:text="Settings"
                 android:textColor="@color/black"
                 android:textSize="40sp"
-                android:textStyle="bold"
+                
                 android:layout_alignBottom="@+id/backbuttonsetting"
                 android:layout_marginBottom="-80dp"
                 android:layout_marginLeft="20dp"

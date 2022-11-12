@@ -52,7 +52,7 @@ public class FacebookAuthActivity extends RegisterationScreen {
                 new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
-                        Toast.makeText(FacebookAuthActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(FacebookAuthActivity.this, "Success", Toast.LENGTH_SHORT).show();
 
                         // App code
                         handleFacebookAccessToken(loginResult.getAccessToken());
@@ -62,14 +62,14 @@ public class FacebookAuthActivity extends RegisterationScreen {
                     @Override
                     public void onCancel() {
                         // App code
-                        Toast.makeText(FacebookAuthActivity.this, "Authentication Failed Try Again", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(FacebookAuthActivity.this, "Authentication Failed Try Again", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onError(@NonNull FacebookException exception) {
                         // App code
                         Log.e("info214",exception.toString());
-                        Toast.makeText(FacebookAuthActivity.this, ""+exception.toString(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(FacebookAuthActivity.this, ""+exception.toString(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -92,8 +92,8 @@ public class FacebookAuthActivity extends RegisterationScreen {
                             checkUserDetails(user);
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(FacebookAuthActivity.this, "Authentication failed."+task.getException(),
-                                    Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(FacebookAuthActivity.this, "Authentication failed."+task.getException(),
+                                    //Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -118,7 +118,7 @@ public class FacebookAuthActivity extends RegisterationScreen {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if (snapshot.exists()){
                         updateUI(user);
-                        Toast.makeText(FacebookAuthActivity.this, snapshot.getKey().toString(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(FacebookAuthActivity.this, snapshot.getKey().toString(), Toast.LENGTH_SHORT).show();
                         Intent intent= new Intent(FacebookAuthActivity.this,SwipingActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);

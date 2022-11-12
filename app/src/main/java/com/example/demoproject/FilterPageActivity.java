@@ -64,7 +64,7 @@ public class FilterPageActivity extends AppCompatActivity {
                 if (StartAge>=18 && EndAge<=75 ){
                     if (StartAge <EndAge) {
                         if (flag1==0 && flag2==0  && flag3==0 && flag4==0 && flag5==0 && flag6==0 && flag7==0){
-                            Toast.makeText(FilterPageActivity.this, "select Atleast one of the gender Preferrence", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(FilterPageActivity.this, "select Atleast one of the gender Preferrence", Toast.LENGTH_SHORT).show();
                         }
                         else {
                             if (flag1 == 1) {
@@ -88,18 +88,18 @@ public class FilterPageActivity extends AppCompatActivity {
                             if (flag7 == 1) {
                                 genderSelected.add(Nonbinary.getText().toString());
                             }
-                            Toast.makeText(FilterPageActivity.this, StartAge + "-" + EndAge, Toast.LENGTH_SHORT).show();
-                            Toast.makeText(FilterPageActivity.this, "Gender Selected" + genderSelected.toString(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(FilterPageActivity.this, StartAge + "-" + EndAge, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(FilterPageActivity.this, "Gender Selected" + genderSelected.toString(), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(FilterPageActivity.this, HomePageActivity.class);
                             startActivity(intent);
                         }
                     }
                     else {
-                        Toast.makeText(FilterPageActivity.this, "Age should be in format- Starting Age - Ending Age" ,Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(FilterPageActivity.this, "Age should be in format- Starting Age - Ending Age" ,Toast.LENGTH_SHORT).show();
                     }
                 }
                 else{
-                    Toast.makeText(FilterPageActivity.this, "Age should be in range of 18 - 75", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(FilterPageActivity.this, "Age should be in range of 18 - 75", Toast.LENGTH_SHORT).show();
                 }
             }
         });

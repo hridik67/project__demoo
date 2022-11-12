@@ -119,7 +119,7 @@ public class ProfileFragment extends Fragment {
         photoadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "clicked man", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "clicked man", Toast.LENGTH_SHORT).show();
                 code=0;
                 changephoto(0);
             }
@@ -179,7 +179,7 @@ public class ProfileFragment extends Fragment {
                         userDetails.setDescription(UserDescription.getText().toString());
                         userDetails.setGender(UserGender.getSelectedItem().toString());
                         updatereference.child(currentUser.getUid()).setValue(userDetails);
-                        Toast.makeText(context, "Profile Updated", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(context, "Profile Updated", Toast.LENGTH_SHORT).show();
                         //intent.putExtra("otheruserId",userData.getUserid());
                         //          updatereference.child(currentUser.getUid()).child("gender").setValue(UserGender.getSelectedItem().toString());
                         //        updatereference.child(currentUser.getUid()).child("description").setValue(UserDescription.getText().toString());
@@ -188,10 +188,10 @@ public class ProfileFragment extends Fragment {
                         //  updatereference.child(currentUser.getUid()).child("noOfImage").setValue(imagery1.size());
 
                     } else {
-                        Toast.makeText(context, "You must be above or equal to 18 to register", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(context, "You must be above or equal to 18 to register", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(context, "You must be select a gender to update your profile", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context, "You must be select a gender to update your profile", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -207,7 +207,7 @@ public class ProfileFragment extends Fragment {
                         reference.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
                             @Override
                             public void onComplete(@NonNull Task<Uri> task) {
-                                Toast.makeText(context, "Image succesfully uploaded", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(context, "Image succesfully uploaded", Toast.LENGTH_SHORT).show();
 
                             }
                         });
@@ -216,7 +216,7 @@ public class ProfileFragment extends Fragment {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(context, e.toString()+"Image not Uploaded,check your internet connection and try again!", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(context, e.toString()+"Image not Uploaded,check your internet connection and try again!", Toast.LENGTH_LONG).show();
                         Log.e("info", "onFailure: "+e.toString());
 
                     }
@@ -280,7 +280,7 @@ public class ProfileFragment extends Fragment {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "image click is"+view.getId(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "image click is"+view.getId(), Toast.LENGTH_SHORT).show();
                 code=view.getId();
                 changephoto(view.getId());
             }
@@ -302,7 +302,7 @@ public class ProfileFragment extends Fragment {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "image click is"+view.getId(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "image click is"+view.getId(), Toast.LENGTH_SHORT).show();
                 code=view.getId();
                 changephoto(view.getId());
             }
@@ -314,7 +314,7 @@ public class ProfileFragment extends Fragment {
 
 
     private void changephoto(int z) {
-        Toast.makeText(context, "hello"+String.valueOf(z), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, "hello"+String.valueOf(z), Toast.LENGTH_SHORT).show();
         Intent pickPhoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(pickPhoto, z);
     }
@@ -372,7 +372,7 @@ public class ProfileFragment extends Fragment {
         if (requestCode == 20 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             dispatchTakePictureIntent();
         } else {
-            Toast.makeText(context, "Permission not Granted", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Permission not Granted", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -391,7 +391,7 @@ public class ProfileFragment extends Fragment {
                 if (code == 0) {
                     String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
                     String imageFileName = "JPEG" + timeStamp + "." + getFileExt(selectedImageUri);
-                    Toast.makeText(context, "what"+String.valueOf(requestCode), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context, "what"+String.valueOf(requestCode), Toast.LENGTH_SHORT).show();
                     ImageView imageView = new ImageView(context);
                     imageView.setImageResource(R.mipmap.ic_launcher);
                     imageView.setImageURI(selectedImageUri);

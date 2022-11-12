@@ -12,7 +12,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.demoproject.ChatActivity;
 import com.example.demoproject.R;
 
 import java.util.AbstractList;
@@ -36,11 +35,12 @@ public class mychatuserAdapter extends RecyclerView.Adapter<mychatuserAdapter.my
     @Override
     public void onBindViewHolder(@NonNull myviewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.imageView.setImageBitmap(chatUserData.get(position).getImage());
-        holder.name.setText(chatUserData.get(position).getName());
-        holder.descp.setText(chatUserData.get(position).getDesc());
+        holder.name.setText(chatUserData.get(position).getUserDetails().getName());
+        holder.descp.setText(chatUserData.get(position).getUserDetails().getDescription());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ChatActivitytwo.otherUserdata=new ChatUserData(chatUserData.get(position).getImage(),chatUserData.get(position).getUserDetails(),chatUserData.get(position).getUserid());
                 userListener.onUserClicked(chatUserData.get(position));
             }
         });

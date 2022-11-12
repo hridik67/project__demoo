@@ -86,22 +86,22 @@ public class ChatFragment extends Fragment implements UserListener {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     for (DataSnapshot dataSnapshot:snapshot.getChildren()){
-                        //Toast.makeText(context, dataSnapshot.getValue().toString()+dataSnapshot.getKey(), Toast.LENGTH_SHORT).show();
+                        ////Toast.makeText(context, dataSnapshot.getValue().toString()+dataSnapshot.getKey(), Toast.LENGTH_SHORT).show();
                         if (dataSnapshot.getValue().toString().equals("Matched")){
                             String user=dataSnapshot.getKey().toString();
-                            //Toast.makeText(context, dataSnapshot.getKey(), Toast.LENGTH_SHORT).show();
+                            ////Toast.makeText(context, dataSnapshot.getKey(), Toast.LENGTH_SHORT).show();
                             reference.child(dataSnapshot.getKey()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                                 @Override
                                 public void onComplete(@NonNull Task<DataSnapshot> task) {
                                     if (task.getResult().exists()){
                                         DataSnapshot snapshot1=task.getResult();
                                         UserDetails userDetails = snapshot1.getValue(UserDetails.class);
-                                        //Toast.makeText(context, userDetails.getName().toString(), Toast.LENGTH_SHORT).show();
+                                        ////Toast.makeText(context, userDetails.getName().toString(), Toast.LENGTH_SHORT).show();
                                         getPhots(snapshot1.getKey().toString(),userDetails);
                                     }
                                     else {
                                         nousertext2.setVisibility(View.VISIBLE);
-                                        Toast.makeText(context, "You have no Matches till yet Swipe and Find your Match", Toast.LENGTH_SHORT).show();
+                                        //Toast.makeText(context, "You have no Matches till yet Swipe and Find your Match", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -125,7 +125,7 @@ public class ChatFragment extends Fragment implements UserListener {
                         @Override
                         public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                             Bitmap bitmap = BitmapFactory.decodeFile(localfile.getAbsolutePath());
-                            ChatUserData chatUserData1=new ChatUserData(bitmap,userDetails.getName(),userDetails.getDescription(),toString);
+                            ChatUserData chatUserData1=new ChatUserData(bitmap,userDetails,toString);
                             chatUserData.add(chatUserData1);
                             recyclerView.setAdapter(new mychatuserAdapter(chatUserData,ChatFragment.this));
                         }
@@ -144,7 +144,7 @@ public class ChatFragment extends Fragment implements UserListener {
     @Override
     public void onUserClicked(ChatUserData userData) {
         Intent intent = new Intent(getactivity, SingleUserChatActivity.class);
-        intent.putExtra("otherusername",userData.getName());
+        intent.putExtra("otherusername",userData.getUserDetails().getName());
         intent.putExtra("otheruserId",userData.getUserid());
         startActivity(intent);
     }

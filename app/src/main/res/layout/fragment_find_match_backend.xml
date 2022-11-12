@@ -21,6 +21,6 @@
         android:layout_gravity="center"
         android:text="Please wait getting the users details"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="18sp"
         tools:ignore="TextContrastCheck,TextContrastCheck" />
 </FrameLayout>

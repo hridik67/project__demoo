@@ -131,7 +131,7 @@ public class FindMatchBackendFragment extends Fragment {
                 }
             }
             else {
-                Toast.makeText(context, "Give permission access the location", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "Give permission access the location", Toast.LENGTH_SHORT).show();
                 requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             }
         }
@@ -146,11 +146,11 @@ public class FindMatchBackendFragment extends Fragment {
         if (requestCode == 2) {
             if (resultCode == Activity.RESULT_OK) {
 
-                Toast.makeText(context, "gps is on", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "gps is on", Toast.LENGTH_SHORT).show();
                 getCurrentLocation();
             }
             else{
-                Toast.makeText(context, "gps is required to turn on", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "gps is required to turn on", Toast.LENGTH_SHORT).show();
                 turnOnGPS();
             }
         }
@@ -181,7 +181,7 @@ public class FindMatchBackendFragment extends Fragment {
                                         double latitude = locationResult.getLocations().get(index).getLatitude();
                                         double longitude = locationResult.getLocations().get(index).getLongitude();
                                         currentlocation = locationResult.getLocations().get(index);
-                                        Toast.makeText(context, "Latitude: "+ latitude + "\n" + "Longitude: "+ longitude, Toast.LENGTH_SHORT).show();
+                                        //Toast.makeText(context, "Latitude: "+ latitude + "\n" + "Longitude: "+ longitude, Toast.LENGTH_SHORT).show();
                                         getmatchesFirst();
 
                                         //AddressText.setText("Latitude: "+ latitude + "\n" + "Longitude: "+ longitude);
@@ -191,7 +191,7 @@ public class FindMatchBackendFragment extends Fragment {
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
                                 }
                             });
 
@@ -222,7 +222,7 @@ public class FindMatchBackendFragment extends Fragment {
 
                 try {
                     LocationSettingsResponse response = task.getResult(ApiException.class);
-                    Toast.makeText(context, "GPS is already tured on", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context, "GPS is already tured on", Toast.LENGTH_SHORT).show();
 
 
                 } catch (ApiException e) {
@@ -278,7 +278,7 @@ public class FindMatchBackendFragment extends Fragment {
 
                             }
                             else {
-                                Toast.makeText(context, "unable to get location please allow permission in setting and switch on your location", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(context, "unable to get location please allow permission in setting and switch on your location", Toast.LENGTH_SHORT).show();
                                 text.setText("unable to get location please allow permission in setting and switch on your location");
                                 GPS();
                                 //getLastLocation();
@@ -289,7 +289,7 @@ public class FindMatchBackendFragment extends Fragment {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -312,9 +312,9 @@ public class FindMatchBackendFragment extends Fragment {
                         public void onComplete(@NonNull Task<DataSnapshot> task) {
                             DataSnapshot snapshot=task.getResult();
                             for (DataSnapshot dataSnapshot:snapshot.getChildren()){
-                                //Toast.makeText(context, dataSnapshot.getValue().toString()+dataSnapshot.getKey(), Toast.LENGTH_SHORT).show();
+                                ////Toast.makeText(context, dataSnapshot.getValue().toString()+dataSnapshot.getKey(), Toast.LENGTH_SHORT).show();
                                 if (dataSnapshot.getValue().toString().equals("Matched")){
-                                  //  Toast.makeText(context, dataSnapshot.getKey(), Toast.LENGTH_SHORT).show();
+                                  //  //Toast.makeText(context, dataSnapshot.getKey(), Toast.LENGTH_SHORT).show();
                                     matchlist.add(dataSnapshot.getKey());
                                 }
                             }
@@ -338,12 +338,12 @@ public class FindMatchBackendFragment extends Fragment {
         if (requestCode == REQUEST_CODE){
 
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(context,"permission granted",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context,"permission granted",Toast.LENGTH_SHORT).show();
                 //getLastLocation();
                 GPS();
 
             } else {
-                Toast.makeText(context,"Please provide the location access from the settings to move forward",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context,"Please provide the location access from the settings to move forward",Toast.LENGTH_SHORT).show();
                 text.setText("Please provide the location access from the settings to move forward");
                 askPermission();
 
@@ -371,7 +371,7 @@ public class FindMatchBackendFragment extends Fragment {
 
                 try {
                     LocationSettingsResponse response = task.getResult(ApiException.class);
-                    Toast.makeText(context, "GPS is tured on", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context, "GPS is tured on", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getData,HomePageActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);
@@ -405,12 +405,12 @@ public class FindMatchBackendFragment extends Fragment {
 
             switch (resultCode) {
                 case Activity.RESULT_OK:
-                    Toast.makeText(context, "GPS is tured on", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context, "GPS is tured on", Toast.LENGTH_SHORT).show();
                     getLastLocation();
                     break;
 
                 case Activity.RESULT_CANCELED:
-                    Toast.makeText(context, "GPS required to be tured on", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context, "GPS required to be tured on", Toast.LENGTH_SHORT).show();
                     text.setText("GPS required to be tured on");
                     GPS();
                     break;
@@ -462,7 +462,7 @@ public class FindMatchBackendFragment extends Fragment {
 
 
                             else {
-                                Toast.makeText(context, "no data was found in according to your filters", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(context, "no data was found in according to your filters", Toast.LENGTH_SHORT).show();
                                 text.setText("no data was found in according to your filters");
                             }
 
@@ -470,7 +470,7 @@ public class FindMatchBackendFragment extends Fragment {
                         }
                     }
                     if (distance.size()==0 && UserId.size()==0){
-                        Toast.makeText(context, "No User was found according to your filters", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(context, "No User was found according to your filters", Toast.LENGTH_SHORT).show();
                         text.setText("No User was found according to your filters");
                     } else {
                         getData.setDistance(distance);
@@ -486,13 +486,13 @@ public class FindMatchBackendFragment extends Fragment {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
 
                 }
             });
 
         } else{
-            Toast.makeText(context, "You are unauthorized", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "You are unauthorized", Toast.LENGTH_SHORT).show();
         }
 
     }

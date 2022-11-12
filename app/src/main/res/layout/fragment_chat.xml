@@ -20,7 +20,7 @@
         android:padding="20dp"
         android:text="You have no Matches till yet Swipe and Find your Match"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:visibility="invisible"
         tools:ignore="TextContrastCheck,TextContrastCheck" />
 

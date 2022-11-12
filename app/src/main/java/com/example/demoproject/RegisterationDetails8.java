@@ -114,13 +114,13 @@ public class RegisterationDetails8 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (username.getText().toString().length()<=0){
-                    Toast.makeText(RegisterationDetails8.this, "Enter your Username", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(RegisterationDetails8.this, "Enter your Username", Toast.LENGTH_SHORT).show();
                 } else if (!password.getText().toString().equals(confirmpassword.getText().toString())){
-                    Toast.makeText(RegisterationDetails8.this, "Your password and confirm password does not match", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(RegisterationDetails8.this, "Your password and confirm password does not match", Toast.LENGTH_SHORT).show();
                 } else if (password.getText().toString().length()<=0){
-                    Toast.makeText(RegisterationDetails8.this, "Enter your Password", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(RegisterationDetails8.this, "Enter your Password", Toast.LENGTH_SHORT).show();
                 } else if (getCurrentlocation==null){
-                    Toast.makeText(RegisterationDetails8.this, "unable to get location please allow permission in setting and switch on your location", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(RegisterationDetails8.this, "unable to get location please allow permission in setting and switch on your location", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     sendDatatobackend();
@@ -148,7 +148,7 @@ public class RegisterationDetails8 extends AppCompatActivity {
                 }
             }
             else {
-                Toast.makeText(RegisterationDetails8.this, "Give permission access the location", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(RegisterationDetails8.this, "Give permission access the location", Toast.LENGTH_SHORT).show();
                 requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             }
         }
@@ -163,11 +163,11 @@ public class RegisterationDetails8 extends AppCompatActivity {
         if (requestCode == 2) {
             if (resultCode == Activity.RESULT_OK) {
 
-                Toast.makeText(RegisterationDetails8.this, "gps is on", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(RegisterationDetails8.this, "gps is on", Toast.LENGTH_SHORT).show();
                 getCurrentLocation();
             }
             else{
-                Toast.makeText(RegisterationDetails8.this, "gps is required to turn on", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(RegisterationDetails8.this, "gps is required to turn on", Toast.LENGTH_SHORT).show();
                 turnOnGPS();
             }
         }
@@ -199,7 +199,7 @@ public class RegisterationDetails8 extends AppCompatActivity {
                                         getCurrentlocation=locationResult.getLocations().get(index);
                                         Lattitude=latitude;
                                         Longitude=longitude;
-                                        Toast.makeText(RegisterationDetails8.this, "Latitude: "+ latitude + "\n" + "Longitude: "+ longitude, Toast.LENGTH_SHORT).show();
+                                        //Toast.makeText(RegisterationDetails8.this, "Latitude: "+ latitude + "\n" + "Longitude: "+ longitude, Toast.LENGTH_SHORT).show();
 
                                         //AddressText.setText("Latitude: "+ latitude + "\n" + "Longitude: "+ longitude);
                                     }
@@ -208,7 +208,7 @@ public class RegisterationDetails8 extends AppCompatActivity {
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(RegisterationDetails8.this, e.toString(), Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(RegisterationDetails8.this, e.toString(), Toast.LENGTH_SHORT).show();
                                 }
                             });
 
@@ -239,7 +239,7 @@ public class RegisterationDetails8 extends AppCompatActivity {
 
                 try {
                     LocationSettingsResponse response = task.getResult(ApiException.class);
-                    Toast.makeText(RegisterationDetails8.this, "GPS is already tured on", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(RegisterationDetails8.this, "GPS is already tured on", Toast.LENGTH_SHORT).show();
 
 
                 } catch (ApiException e) {
@@ -296,7 +296,7 @@ public class RegisterationDetails8 extends AppCompatActivity {
 
                             }
                             else {
-                                Toast.makeText(RegisterationDetails8.this, "unable to get location please allow permission in setting and switch on your location", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(RegisterationDetails8.this, "unable to get location please allow permission in setting and switch on your location", Toast.LENGTH_SHORT).show();
                                 GPS();
                                 //getLastLocation();
                             }
@@ -306,7 +306,7 @@ public class RegisterationDetails8 extends AppCompatActivity {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(RegisterationDetails8.this, e.toString(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(RegisterationDetails8.this, e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -333,12 +333,12 @@ public class RegisterationDetails8 extends AppCompatActivity {
         if (requestCode == REQUEST_CODE){
 
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(RegisterationDetails8.this,"permission granted",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(RegisterationDetails8.this,"permission granted",Toast.LENGTH_SHORT).show();
                 //getLastLocation();
                 GPS();
 
             } else {
-                Toast.makeText(RegisterationDetails8.this,"Please provide the location access from the settings to move forward",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(RegisterationDetails8.this,"Please provide the location access from the settings to move forward",Toast.LENGTH_SHORT).show();
                 askPermission();
 
             }
@@ -365,7 +365,7 @@ public class RegisterationDetails8 extends AppCompatActivity {
 
                 try {
                     LocationSettingsResponse response = task.getResult(ApiException.class);
-                    Toast.makeText(RegisterationDetails8.this, "GPS is tured on", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(RegisterationDetails8.this, "GPS is tured on", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(RegisterationDetails8.this,RegisterationDetails8.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);
@@ -399,12 +399,12 @@ public class RegisterationDetails8 extends AppCompatActivity {
 
             switch (resultCode) {
                 case Activity.RESULT_OK:
-                    Toast.makeText(RegisterationDetails8.this, "GPS is tured on", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(RegisterationDetails8.this, "GPS is tured on", Toast.LENGTH_SHORT).show();
                     getLastLocation();
                     break;
 
                 case Activity.RESULT_CANCELED:
-                    Toast.makeText(RegisterationDetails8.this, "GPS required to be tured on", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(RegisterationDetails8.this, "GPS required to be tured on", Toast.LENGTH_SHORT).show();
                     GPS();
                     break;
             }
@@ -435,7 +435,7 @@ public class RegisterationDetails8 extends AppCompatActivity {
                 userDetails.setPassword(password.getText().toString());
                 String currentUid= FirebaseAuth.getInstance().getCurrentUser().getUid();
                 reference.child(currentUid).setValue(userDetails);
-                Toast.makeText(RegisterationDetails8.this, "Profile Created", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(RegisterationDetails8.this, "Profile Created", Toast.LENGTH_SHORT).show();
 
                  */
             }

@@ -104,30 +104,30 @@ public class FindMatchFragment extends Fragment {
         scrollView.setOnTouchListener(new OnSwipeTouchListener(){
             @Override
             public boolean onSwipeRight() {
-                Toast.makeText(getData, "swipe right", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getData, "swipe right", Toast.LENGTH_SHORT).show();
                 choices="like";
                 swipeUpdate(choices);
                 linearLayout.removeAllViews();
                 linearLayout.invalidate();
-                Toast.makeText(getContext(), choices, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), choices, Toast.LENGTH_SHORT).show();
                 return super.onSwipeRight();
             }
 
             @Override
             public boolean onSwipeLeft() {
-                Toast.makeText(getData, "swipe left", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getData, "swipe left", Toast.LENGTH_SHORT).show();
                 choices = "nope";
                 swipeUpdate(choices);
                 linearLayout.removeAllViews();
                 linearLayout.invalidate();
-                Toast.makeText(getContext(), choices, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), choices, Toast.LENGTH_SHORT).show();
                 return super.onSwipeLeft();
             }
         });
         /*scrollView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                Toast.makeText(getData, "touched", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getData, "touched", Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
@@ -140,7 +140,7 @@ public class FindMatchFragment extends Fragment {
                 swipeUpdate(choices);
                 linearLayout.removeAllViews();
                 linearLayout.invalidate();
-                Toast.makeText(getContext(), choices, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), choices, Toast.LENGTH_SHORT).show();
             }
         });
         like.setOnClickListener(new View.OnClickListener() {
@@ -150,7 +150,7 @@ public class FindMatchFragment extends Fragment {
                 swipeUpdate(choices);
                 linearLayout.removeAllViews();
                 linearLayout.invalidate();
-                Toast.makeText(getContext(), choices, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), choices, Toast.LENGTH_SHORT).show();
             }
         });
         heart.setOnClickListener(new View.OnClickListener() {
@@ -160,7 +160,7 @@ public class FindMatchFragment extends Fragment {
                 swipeUpdate(choices);
                 linearLayout.removeAllViews();
                 linearLayout.invalidate();
-                Toast.makeText(getContext(), choices, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), choices, Toast.LENGTH_SHORT).show();
             }
         });
         return view;
@@ -182,7 +182,7 @@ public class FindMatchFragment extends Fragment {
                     DataSnapshot snapshot= task.getResult();
                     if (snapshot.exists()) {
                         if ((Objects.requireNonNull(snapshot.getValue()).toString().equals("like") || snapshot.getValue().toString().equals("heart")) && !(choices.equals("nope"))) {
-                            Toast.makeText(context, "its a match", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context, "its a match", Toast.LENGTH_SHORT).show();
                             MatchList.child(currentUser).child(UserId.valueAt(i)).setValue("Matched");
                             MatchList.child(UserId.valueAt(i)).child(currentUser).setValue("Matched");
                             SendNotification.Companion.send("Matched",distance.valueAt(i).getChattoken(),"You have matched check who it is",currentUser);
@@ -209,14 +209,14 @@ public class FindMatchFragment extends Fragment {
             relativeLayout.setVisibility(View.INVISIBLE);
             bottomlinearLayout.setVisibility(View.INVISIBLE);
 
-            Toast.makeText(context, "No further users to show according to filters", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "No further users to show according to filters", Toast.LENGTH_SHORT).show();
         }
     }
 
 
     public void update(int j){
 
-        Toast.makeText(context, String.valueOf(distance.size()), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, String.valueOf(distance.size()), Toast.LENGTH_SHORT).show();
         if (j<distance.size()) {
             getPhots(UserId.valueAt(j).toString(),distance.valueAt(j).getNoOfImage());
             dist.setText(distance.keyAt(j).toString() + "KM");
@@ -229,7 +229,7 @@ public class FindMatchFragment extends Fragment {
             scrollView.setVisibility(View.INVISIBLE);
             relativeLayout.setVisibility(View.INVISIBLE);
             bottomlinearLayout.setVisibility(View.INVISIBLE);
-            Toast.makeText(context, "No further users to show according to filters", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "No further users to show according to filters", Toast.LENGTH_SHORT).show();
         }
 
     }

@@ -26,7 +26,7 @@
         android:padding="20dp"
         android:text="No further users to show according to filters"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:visibility="invisible"
         tools:ignore="TextContrastCheck,TextContrastCheck" />
 
@@ -65,7 +65,7 @@
             android:textColor="@color/black"
             android:textColorLink="@color/black"
             android:textSize="32sp"
-            android:textStyle="bold" />
+             />
 
         <TextView
             android:id="@+id/Name"
@@ -80,7 +80,7 @@
             android:textColor="@color/black"
             android:textColorLink="@color/black"
             android:textSize="32sp"
-            android:textStyle="bold" />
+             />
 
         <TextView
             android:id="@+id/gender"
@@ -95,7 +95,7 @@
             android:textColor="@color/black"
             android:textColorLink="@color/black"
             android:textSize="32sp"
-            android:textStyle="bold" />
+             />
 
         <TextView
             android:id="@+id/description"
@@ -111,7 +111,7 @@
             android:textColor="@color/black"
             android:textColorLink="@color/black"
             android:textSize="32sp"
-            android:textStyle="bold" />
+             />
     </RelativeLayout>
 
     <LinearLayout

@@ -13,7 +13,7 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
-import com.example.demoproject.ChatActivity
+import com.example.demoproject.Chats.ChatActivitytwo
 import com.example.demoproject.Chats.VideoCallinComing
 import com.example.demoproject.HomePageActivity
 import com.example.demoproject.R
@@ -56,7 +56,7 @@ class FirebaseService : FirebaseMessagingService() {
         }
         else {
             Log.e("messfuck", message.data["message"].toString())
-            val intent = Intent(this, ChatActivity::class.java)
+            val intent = Intent(this, ChatActivitytwo::class.java)
             val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             val notificationID = Random.nextInt()
 

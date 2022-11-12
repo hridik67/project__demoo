@@ -34,8 +34,9 @@
             android:id="@+id/name"
             android:text="name"
             android:layout_marginLeft="30dp"
-            android:textSize="25dp"
-            android:textStyle="bold"
+            android:textSize="18sp"
+            android:fontFamily="@string/fontfamily"
+            
             android:layout_toRightOf="@+id/userimagecard"
             android:gravity="center_vertical"/>
 
@@ -44,6 +45,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/descrip"
             android:text="Description"
+            android:fontFamily="@string/fontfamily"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:textSize="14dp"

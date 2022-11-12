@@ -6,11 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".SwipingActivity">
 
+    <ScrollView
+        android:id="@+id/sv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        >
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/swipe1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="300dp"
         >
+
 
         <ProgressBar
             android:id="@+id/progress_bar"
@@ -25,12 +38,11 @@
             android:id="@+id/swipe_profile_view"
             android:layout_width="300dp"
             android:layout_height="500dp"
-            android:background="@drawable/background_box2"
             android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/textlogo"
+            android:layout_marginBottom="-550dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintStart_toStartOf="parent">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/photocard"
@@ -51,16 +63,17 @@
                     android:id="@+id/swipe_profile_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/photo1"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/profile2"
                     android:contentDescription="TODO" />
 
-                <ImageView
+                <!--<ImageView
                     android:id="@+id/swipe_profile_rewind"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginTop="10dp"
                     android:src="@drawable/ic_baseline_restart_alt_24" />
+                    -->
 
             </androidx.cardview.widget.CardView>
 
@@ -73,6 +86,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
+                android:fontFamily="@string/fontfamily"
                 android:text="5 KM away"
                 android:textSize="18dp" />
 
@@ -83,10 +97,11 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginBottom="50dp"
-                android:text="Mathew,"
+                android:text="Mathew"
                 android:textColor="@color/black"
-                android:textSize="32dp"
-                android:textStyle="bold" />
+                android:textSize="18sp"
+                android:fontFamily="@string/fontfamily"
+                 />
 
             <TextView
                 android:id="@+id/swipe_profile_age"
@@ -94,12 +109,38 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@id/swipe_profile_name"
                 android:layout_toEndOf="@id/swipe_profile_name"
-                android:text=" 23"
-                android:textSize="32dp"
+                android:text="  23"
+                android:textSize="18sp"
+                android:fontFamily="@string/fontfamily"
 
                 />
 
         </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/nope_stamp"
+            android:visibility="invisible"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/nope_transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+        <ImageView
+            android:id="@+id/heart_stamp"
+            android:visibility="invisible"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/heart_transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/profile"
@@ -118,6 +159,7 @@
             app:layout_constraintVertical_bias="0.05">
 
             <ImageView
+                android:id="@+id/person_profile"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:scaleType="fitXY"
@@ -126,6 +168,7 @@
         </androidx.cardview.widget.CardView>
 
         <ImageView
+            android:id="@+id/textlogo"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:scaleType="fitCenter"
@@ -149,7 +192,10 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.05"
             app:srcCompat="@drawable/ic_baseline_chat_24" />
+
         <RelativeLayout
+            android:id="@+id/rl45"
+            android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/swipe_profile_view"
@@ -158,46 +204,244 @@
             android:layout_marginBottom="-100dp"
             >
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:orientation="vertical">
         <ImageView
             android:id="@+id/nope"
-            android:visibility="invisible"
-            android:layout_width="150dp"
+
+            android:layout_width="70dp"
             android:layout_height="70dp"
             android:scaleType="fitXY"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.00"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.9"
             app:srcCompat="@drawable/nope" />
+        <TextView
+            android:id="@+id/nope_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No"
+            android:layout_gravity="center_horizontal"
+            android:textSize="18sp"
+            android:fontFamily="@string/fontfamily"
+            
+            />
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginRight="30dp"
+                android:layout_alignParentRight="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.9">
 
-        <ImageView
+
+            <ImageView
             android:id="@+id/heart"
-            android:visibility="invisible"
-            android:layout_width="150dp"
+
+            android:layout_width="70dp"
             android:layout_height="70dp"
             android:scaleType="fitXY"
             android:layout_alignParentRight="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintHorizontal_bias="0.8"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.9"
             app:srcCompat="@drawable/heart" />
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@string/fontfamily"
+                    android:id="@+id/heart_text"
+                    android:text="Like"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="18sp"
+                    
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerInParent="true">
         <ImageView
-            android:id="@+id/like"
-            android:visibility="invisible"
+            android:id="@+id/swipe_profile_rewind"
             android:layout_width="150dp"
             android:layout_height="70dp"
-            android:scaleType="fitCenter"
-            android:layout_centerInParent="true"
-            app:srcCompat="@drawable/like" />
+            app:srcCompat="@drawable/ic_baseline_restart_alt_24" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/swipe_profile_rewind_text"
+                android:layout_height="wrap_content"
+                android:text="Reload"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@string/fontfamily"
+
+                android:textSize="18sp"
+                
+                />
+        </LinearLayout>
 
 
         </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/rl45"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="-100dp"
+            />
+
+
+        <!--
+
+        <TextView
+            android:id="@+id/chat_now"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chat now"
+            android:textSize="28dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background="@drawable/background_box_gener1"
+            app:layout_constraintBottom_toBottomOf="@+id/rl45"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="-20dp"
+            android:layout_marginBottom="-100dp"
+            />
+        <TextView
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="chat now"
+            android:textSize="28dp"
+            android:padding="20dp"
+            android:background="@drawable/background_box"
+            app:layout_constraintBottom_toBottomOf="@+id/chat_now"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="-100dp"
+            />
+
+        <RelativeLayout
+            android:id="@+id/chat_now_chat_box"
+            android:layout_width="300dp"
+            android:layout_height="500dp"
+            android:background="@drawable/background_box2"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+
+            <ImageView
+                android:id="@+id/backbutton_chat_now"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="40dp"
+                />
+            <TextView
+                android:id="@+id/swipe_profile_name_chat_now"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/backbutton_chat_now"
+                android:layout_alignLeft="@id/backbutton_chat_now"
+                android:layout_marginBottom="-50dp"
+                android:layout_marginLeft="10dp"
+                android:text="Mathew"
+                android:textColor="@color/black"
+                android:textSize="32dp"
+                 />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/swipe_profile_name_chat_now"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="-70dp"
+                android:layout_marginLeft="10dp"
+                android:text="Start a conversation"
+                />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/chat_now_chat_box_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="8dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_alignBottom="@+id/chat_now_chat_box_cv"
+                android:foregroundGravity="center_vertical"
+                app:cardCornerRadius="50dp"
+                app:cardElevation="10dp"
+                app:cardPreventCornerOverlap="false"
+                >
+
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:background="@drawable/gradient"
+                    />
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/chat_now_chat_box_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="8dp"
+                android:foregroundGravity="center_vertical"
+                app:cardCornerRadius="100dp"
+                app:cardElevation="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="30dp"
+                app:cardPreventCornerOverlap="false"
+                android:layout_alignParentBottom="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/chatinput"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Your Message Here"
+                    android:minHeight="30dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColorHint="#757575"
+                    tools:layout_editor_absoluteX="-6dp"
+                    tools:layout_editor_absoluteY="834dp" />
+
+                <ImageView
+                    android:id="@+id/send_message"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_send"
+                    android:layout_alignParentEnd="true"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+-->
+
+
+
 
         <TextView
             android:id="@+id/nousertext"
@@ -209,7 +453,7 @@
             android:padding="20dp"
             android:text="Out of matches"
             android:textColor="@color/white"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -220,7 +464,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/nousertextbutton"
             android:visibility="invisible"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cardCornerRadius="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -233,19 +477,20 @@
             >
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="50dp"
-            android:layout_gravity="center"
             android:background="@drawable/gradient"
             android:gravity="center"
+            android:fontFamily="@string/fontfamily"
             android:text="Go to filters Page"
             android:textColor="@color/white"
-            android:textSize="24sp"
+            android:textSize="18sp"
             />
         </androidx.cardview.widget.CardView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <ScrollView
         android:id="@+id/sv2"
@@ -256,7 +501,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
         >
     <RelativeLayout
         android:id="@+id/swipe2"
@@ -289,11 +533,10 @@
             android:id="@+id/backbuttonswipe2"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
             android:layout_alignParentStart="true"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="30dp"
-            />
+            android:src="@drawable/backarrow" />
 
 
         <RelativeLayout
@@ -309,59 +552,85 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:text="Mathew,"
+                android:text="Mathew"
+                android:fontFamily="@string/fontfamily"
                 android:textColor="@color/black"
-                android:textSize="22dp"
+                android:textSize="18sp"
                 android:layout_marginStart="20dp"
-                android:textStyle="bold" />
+                 />
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/swipe_profile_age2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 23"
-                android:textSize="22dp"
+                android:textSize="18sp"
                 android:layout_alignBaseline="@id/swipe_profile_name2"
                 android:layout_toEndOf="@id/swipe_profile_name2"
                 />
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/match_swipe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="20dp"
-                android:layout_toEndOf="@id/swipe_profile_age2"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
                 >
                 <TextView
                     android:layout_width="150dp"
-                    android:layout_height="40dp"
+                    android:layout_height="30dp"
                     android:background="@drawable/gradient"
                     android:text="Match Now"
                     android:textColor="@color/white"
-                    android:textStyle="bold"
+                    
                     android:textSize="20dp"
                     android:gravity="center"
                     />
             </androidx.cardview.widget.CardView>
+            -->
+            <ImageView
+                android:id="@+id/match_swipe"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/heart"
+                android:layout_alignEnd="@+id/swipe_profile_name2"
+                android:layout_marginRight="-70dp"
+                />
         </RelativeLayout>
+        <TextView
+            android:id="@+id/swipe_profile_age2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="23"
+            android:textSize="18sp"
+            android:fontFamily="@string/fontfamily"
+            android:layout_alignBottom="@id/rl"
+            android:layout_marginBottom="-50dp"
+            android:layout_marginStart="20dp"
+
+            />
 
         <TextView
             android:id="@+id/swipe_profile_study"
             android:layout_width="wrap_content"
+            android:fontFamily="@string/fontfamily"
             android:layout_height="wrap_content"
             android:text="Studied at NIFT,Delhi"
-            android:textSize="22dp"
-            android:layout_alignBottom="@id/rl"
-            android:layout_marginBottom="-80dp"
+            android:textSize="18sp"
+            android:layout_alignBottom="@id/swipe_profile_age2"
+            android:layout_marginBottom="-40dp"
             android:layout_marginStart="20dp"
             />
         <TextView
             android:id="@+id/swipe_profile_work"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@string/fontfamily"
             android:text="Works at Kaaya fashion "
-            android:textSize="22dp"
+            android:textSize="18sp"
             android:layout_alignBottom="@id/swipe_profile_study"
             android:layout_marginBottom="-40dp"
             android:layout_marginStart="20dp"
@@ -379,22 +648,23 @@
             <TextView
                 android:id="@+id/swipe_profile_aboutme"
                 android:layout_width="wrap_content"
+                android:fontFamily="@string/fontfamily"
                 android:layout_height="wrap_content"
                 android:text="About me"
                 android:textColor="@color/black"
                 android:textSize="30dp"
-                android:textStyle="bold" />
+                 />
 
             <TextView
                 android:id="@+id/swipe_profile_description"
                 android:layout_width="wrap_content"
+                android:fontFamily="@string/fontfamily"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:layout_marginEnd="20dp"
                 android:text="Remember that not getting what you want is sometimes a wonderful stroke of love"
-                android:textColor="@color/common_google_signin_btn_text_light_default"
-                android:textSize="22dp"
-                android:textStyle="bold" />
+                android:textSize="18sp"
+                />
 
         </RelativeLayout>
 
@@ -411,9 +681,12 @@
                 android:id="@+id/swipe_zodiac"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@string/fontfamily"
                 android:layout_alignParentBottom="true"
                 android:text="Zodiac Sign - "
-                android:textSize="22dp"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                
                 />
 
             <TextView
@@ -421,9 +694,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Libra"
-                android:textSize="22dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
+                android:fontFamily="@string/fontfamily"
+                android:textSize="18sp"
                 android:layout_alignBaseline="@id/swipe_zodiac"
                 android:layout_toEndOf="@id/swipe_zodiac"
                 />
@@ -443,17 +715,19 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:text="Drinking - "
-                android:textSize="22dp"
+                android:fontFamily="@string/fontfamily"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                
                 />
 
             <TextView
                 android:id="@+id/swipe_profile_favourite_drink"
                 android:layout_width="wrap_content"
+                android:fontFamily="@string/fontfamily"
                 android:layout_height="wrap_content"
                 android:text="Yes"
-                android:textSize="22dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
+                android:textSize="18sp"
                 android:layout_alignBaseline="@id/swipe_favourite"
                 android:layout_toEndOf="@id/swipe_favourite"
                 />
@@ -472,17 +746,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
+                android:fontFamily="@string/fontfamily"
                 android:text="Pets - "
-                android:textSize="22dp" />
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                
+                />
 
             <TextView
                 android:id="@+id/swipe_profile_pets"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dog"
-                android:textSize="22dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
+                android:fontFamily="@string/fontfamily"
+                android:textSize="18sp"
                 android:layout_alignBaseline="@id/swipe_pet"
                 android:layout_toEndOf="@id/swipe_pet"
                 />
@@ -501,15 +778,15 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:text="Pets - "
-                android:textSize="22dp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dog"
-                android:textSize="22dp"
+                android:textSize="18sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"
+                
                 />
         </RelativeLayout>
 
@@ -583,20 +860,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@string/fontfamily"
             android:text="It's a connect"
             android:textColor="#E15454"
-            android:textSize="40dp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.65"/>
         <androidx.cardview.widget.CardView
+            android:id="@+id/match_chat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cardCornerRadius="20dp"
             android:background="#E15454"
-            android:textSize="22dp"
+            android:textSize="18sp"
             android:layout_margin="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -607,10 +886,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="chat now"
+            android:fontFamily="@string/fontfamily"
             android:padding="15dp"
             android:textColor="@color/white"
             android:background="#E15454"
-            android:textSize="22dp" />
+            android:textSize="18sp" />
         </androidx.cardview.widget.CardView>
         <TextView
             android:id="@+id/skipped"
@@ -618,7 +898,8 @@
             android:layout_height="wrap_content"
             android:text="skip"
             android:padding="15dp"
-            android:textSize="22dp"
+            android:fontFamily="@string/fontfamily"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -234,7 +234,7 @@ public class RegisterationDetails3 extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Uri> task) {
                                 profile_view.setImageURI(imguri);
                                 imageUri=imguri;
-                                Toast.makeText(RegisterationDetails3.this, "Image succesfully uploaded", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(RegisterationDetails3.this, "Image succesfully uploaded", Toast.LENGTH_SHORT).show();
                                 photo=1;
 
                             }
@@ -244,7 +244,7 @@ public class RegisterationDetails3 extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(RegisterationDetails3.this, e.toString()+"Image not Uploaded,check your internet connection and try again!", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(RegisterationDetails3.this, e.toString()+"Image not Uploaded,check your internet connection and try again!", Toast.LENGTH_LONG).show();
                         Log.e("info", "onFailure: "+e.toString());
 
                     }

@@ -39,13 +39,27 @@ public class RegisterationDetails4 extends AppCompatActivity {
     static int noofphotos=1,flag=1;
     CardView cardView2,cardView3,cardView4,cardView5,cardView6,cardView7;
     StorageReference storage;
-    ArrayList<ImageView> imageViews;
+    ArrayList<ImageView> imageViews,imageViewslower;
     ImageView imageView2,imageView3,imageView4,imageView5,imageView6,imageView7,backbutton4;
+    ImageView imageview2lower,imageview3lower,imageview4lower,imageview5lower,imageview6lower,imageview7lower;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         imageViews=new ArrayList<>();
+        imageViewslower=new ArrayList<>();
+        imageview2lower=findViewById(R.id.imageview2_lower);
+        imageViewslower.add(imageview2lower);
+        imageview3lower=findViewById(R.id.imageview3_lower);
+        imageViewslower.add(imageview3lower);
+        imageview4lower=findViewById(R.id.imageview4_lower);
+        imageViewslower.add(imageview4lower);
+        imageview5lower=findViewById(R.id.imageview5_lower);
+        imageViewslower.add(imageview5lower);
+        imageview6lower=findViewById(R.id.imageview6_lower);
+        imageViewslower.add(imageview6lower);
+        imageview7lower=findViewById(R.id.imageview7_lower);
+        imageViewslower.add(imageview7lower);
         setContentView(R.layout.activity_registeration_details4);
         storage= FirebaseStorage.getInstance().getReference("UsersProfilePhotos");
         backbutton4=findViewById(R.id.backbutton4);
@@ -126,7 +140,7 @@ public class RegisterationDetails4 extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else {
-                    Toast.makeText(RegisterationDetails4.this, "Add Atleast 1 more photo to move further", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(RegisterationDetails4.this, "Add Atleast 1 more photo to move further", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -139,7 +153,7 @@ public class RegisterationDetails4 extends AppCompatActivity {
             Intent pickPhoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(pickPhoto, 1);
         } else {
-            Toast.makeText(this, "You can add 7 photos only on your profile", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "You can add 7 photos only on your profile", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -187,7 +201,8 @@ public class RegisterationDetails4 extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Uri> task) {
                                 imageViews.get(imageviewnumber).setImageURI(imguri);
-                                Toast.makeText(RegisterationDetails4.this, "Image succesfully uploaded", Toast.LENGTH_SHORT).show();
+                                imageViewslower.get(imageviewnumber).setImageDrawable(getDrawable(R.drawable.ic_baseline_highlight_off_24));
+                                //Toast.makeText(RegisterationDetails4.this, "Image succesfully uploaded", Toast.LENGTH_SHORT).show();
                                 if (imageviewnumber==noofphotos-1) {
                                     noofphotos++;
                                 }

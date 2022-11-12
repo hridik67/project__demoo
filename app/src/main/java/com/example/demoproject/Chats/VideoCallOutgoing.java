@@ -60,7 +60,7 @@ public class VideoCallOutgoing extends AppCompatActivity {
             reciever_token = bundle.getString("chattoken");
 
         } else{
-            Toast.makeText(this, "Data Missing", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Data Missing", Toast.LENGTH_SHORT).show();
         }
         tvname.setText(reciever_name);
         StorageReference reference=storage.child(reciever_uid+"Profile Picture"+1);
@@ -97,16 +97,16 @@ public class VideoCallOutgoing extends AppCompatActivity {
                     String response = snapshot.child("response").getValue().toString();
                     if (response.equals("yes")){
                         joinmeeting(key);
-                        Toast.makeText(VideoCallOutgoing.this, "Call Accepted", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(VideoCallOutgoing.this, "Call Accepted", Toast.LENGTH_SHORT).show();
                     } else if (response.equals("no")){
-                        Toast.makeText(VideoCallOutgoing.this, "Call denied", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(VideoCallOutgoing.this, "Call denied", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(VideoCallOutgoing.this,SingleUserChatActivity.class);
                         startActivity(intent);
                         finish();
                     }
 
                 } else{
-                    Toast.makeText(VideoCallOutgoing.this, "Not Responding", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(VideoCallOutgoing.this, "Not Responding", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -134,7 +134,7 @@ public class VideoCallOutgoing extends AppCompatActivity {
             finish();
 
         } catch (Exception e){
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 

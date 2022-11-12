@@ -1,6 +1,8 @@
 package com.example.demoproject;
 
-public class UserDetails {
+import java.io.Serializable;
+
+public class UserDetails implements Serializable {
     private String Email,Name,Description,dob,gender,origin,Address,City,Country,username,password,chattoken,work,study,Height,Zodiac,Education,Drinking,Religion,Pets,filterGender,hidelocation,hideage;
     private int age,noOfImage,ageRange,distance;
     double Lattitude,Longitude;

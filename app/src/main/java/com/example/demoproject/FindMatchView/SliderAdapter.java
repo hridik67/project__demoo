@@ -31,7 +31,7 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.Holder>{
     public void onBindViewHolder(Holder viewHolder, int position) {
 
         viewHolder.imageView.setImageBitmap(images[position]);
-        viewHolder.imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        viewHolder.imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         //viewHolder.imageView.setImageResource(images[position]);
 
     }

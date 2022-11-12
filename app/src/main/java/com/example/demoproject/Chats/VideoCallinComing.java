@@ -93,7 +93,7 @@ public class VideoCallinComing extends AppCompatActivity {
                 finish();
             }
         });
-        Toast.makeText(this, "sender uid is - "+sender_uid, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "sender uid is - "+sender_uid, Toast.LENGTH_SHORT).show();
     }
 
     private void sendResponse(String response) {
@@ -139,7 +139,7 @@ public class VideoCallinComing extends AppCompatActivity {
             finish();
 
         } catch (Exception e){
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 }

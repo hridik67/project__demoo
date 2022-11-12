@@ -2,14 +2,18 @@ package com.example.demoproject.Chats;
 
 import android.graphics.Bitmap;
 
-public class ChatUserData {
-    Bitmap image;
-    String name,desc,userid;
+import com.example.demoproject.UserDetails;
 
-    public ChatUserData(Bitmap image, String name, String desc,String userid) {
+import java.io.Serializable;
+
+public class ChatUserData implements Serializable {
+    Bitmap image;
+    String userid;
+    UserDetails userDetails;
+
+    public ChatUserData(Bitmap image, UserDetails userDetails,String userid) {
         this.image = image;
-        this.name = name;
-        this.desc = desc;
+        this.userDetails=userDetails;
         this.userid=userid;
     }
 
@@ -29,19 +33,11 @@ public class ChatUserData {
         this.image = image;
     }
 
-    public String getName() {
-        return name;
+    public UserDetails getUserDetails() {
+        return userDetails;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setUserDetails(UserDetails userDetails) {
+        this.userDetails = userDetails;
     }
 }

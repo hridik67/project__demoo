@@ -11,7 +11,7 @@
         android:id="@+id/backbutton7"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
+        android:src="@drawable/backarrow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,25 +25,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Filter"
+        android:fontFamily="@string/fontfamily"
         android:textColor="@color/black"
-        android:textSize="50sp"
-        android:textStyle="bold"
+        android:textSize="18sp"
+        
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginLeft="30dp"
         app:layout_constraintHorizontal_bias="0.22"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.13999999" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="Gender"
+        android:fontFamily="@string/fontfamily"
+        android:layout_gravity="start"
+        android:textColor="#BAB4B4"
+        android:textSize="18sp"
+        
+        app:layout_constraintBaseline_toTopOf="@+id/etysf"
+        app:layout_constraintStart_toStartOf="@+id/etysf"
+        />
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/etysf"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:strokeWidth="2dp"
-        app:cardCornerRadius="20dp"
-        app:strokeColor="#B1BCBE"
-        app:cardUseCompatPadding="true"
-        app:cardElevation="10dp"
-        app:cardPreventCornerOverlap="false"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -53,35 +62,34 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="gender"
-            android:layout_gravity="start"
-            android:textColor="#BAB4B4"
-            android:textSize="22dp"
-            android:textStyle="bold" />
-
         <Spinner
             android:id="@+id/filter_gender"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.card.MaterialCardView>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="Distance"
+        android:fontFamily="@string/fontfamily"
+        android:layout_gravity="start"
+        android:textColor="#BAB4B4"
+        android:textSize="18sp"
+        
+        app:layout_constraintBaseline_toTopOf="@+id/earshfkul"
+        app:layout_constraintStart_toStartOf="@+id/earshfkul"
+        />
+
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/earshfkul"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:strokeWidth="2dp"
-        app:cardCornerRadius="20dp"
-        app:strokeColor="#B1BCBE"
-        app:cardUseCompatPadding="true"
-        app:cardElevation="10dp"
-        app:cardPreventCornerOverlap="false"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -91,21 +99,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="distance"
-            android:layout_gravity="start"
-            android:textColor="#BAB4B4"
-            android:textSize="22dp"
-            android:textStyle="bold" />
-        <TextView
             android:id="@+id/distance_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="25KM"
             android:textSize="20dp"
-            android:textStyle="bold"
+            
             android:textColor="@color/black"
             android:layout_gravity="right"
             android:layout_marginRight="20dp"
@@ -118,23 +117,30 @@
             android:layout_height="70dp"
             android:min="25"
             android:max="5000"
-            android:thumbTint="@color/white"
+            android:thumbTint="#E15454"
             android:progressTint="#E15454"
             android:layout_marginTop="20dp"
             android:padding="20dp"
             />
 
     </com.google.android.material.card.MaterialCardView>
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="Age range"
+        android:layout_gravity="start"
+        android:textColor="#BAB4B4"
+        android:textSize="18sp"
+        android:fontFamily="@string/fontfamily"
+        
+        app:layout_constraintBaseline_toTopOf="@+id/jlgkj"
+        app:layout_constraintStart_toStartOf="@+id/jlgkj"
+        />
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/jlgkj"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:strokeWidth="2dp"
-        app:cardCornerRadius="20dp"
-        app:strokeColor="#B1BCBE"
-        app:cardUseCompatPadding="true"
-        app:cardElevation="10dp"
-        app:cardPreventCornerOverlap="false"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -145,21 +151,12 @@
         app:layout_constraintVertical_bias="0.70">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="age range"
-            android:layout_gravity="start"
-            android:textColor="#BAB4B4"
-            android:textSize="22dp"
-            android:textStyle="bold" />
-        <TextView
             android:id="@+id/age_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="20-35"
+            android:text="18-75"
             android:textSize="20dp"
-            android:textStyle="bold"
+            
             android:textColor="@color/black"
             android:layout_gravity="right"
             android:layout_marginRight="20dp"
@@ -168,7 +165,7 @@
         <SeekBar
             android:id="@+id/age"
             android:layout_width="match_parent"
-            android:thumbTint="@color/white"
+            android:thumbTint="#E15454"
             android:progressTint="#E15454"
             android:layout_gravity="center"
             android:min="18"
@@ -184,11 +181,12 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/NEXT7"
         style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:text="Continue"
+        android:fontFamily="@string/fontfamily"
         android:backgroundTint="#E15454"
         app:cornerRadius="24dp"
         android:textColor="@color/white"

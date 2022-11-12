@@ -177,7 +177,7 @@ public class RegisterationDetails7 extends AppCompatActivity {
                 }
             }
             else {
-                Toast.makeText(RegisterationDetails7.this, "Give permission access the location", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(RegisterationDetails7.this, "Give permission access the location", Toast.LENGTH_SHORT).show();
                 requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             }
         }
@@ -192,11 +192,11 @@ public class RegisterationDetails7 extends AppCompatActivity {
         if (requestCode == 2) {
             if (resultCode == Activity.RESULT_OK) {
 
-                Toast.makeText(RegisterationDetails7.this, "gps is on", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(RegisterationDetails7.this, "gps is on", Toast.LENGTH_SHORT).show();
                 getCurrentLocation();
             }
             else{
-                Toast.makeText(RegisterationDetails7.this, "gps is required to turn on", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(RegisterationDetails7.this, "gps is required to turn on", Toast.LENGTH_SHORT).show();
                 turnOnGPS();
             }
         }
@@ -228,7 +228,7 @@ public class RegisterationDetails7 extends AppCompatActivity {
                                         double longitude = locationResult.getLocations().get(index).getLongitude();
                                         Lattitude=latitude;
                                         Longitude=longitude;
-                                        Toast.makeText(RegisterationDetails7.this, "Latitude: "+ latitude + "\n" + "Longitude: "+ longitude, Toast.LENGTH_SHORT).show();
+                                        //Toast.makeText(RegisterationDetails7.this, "Latitude: "+ latitude + "\n" + "Longitude: "+ longitude, Toast.LENGTH_SHORT).show();
                                         //getmatchesFirst();
 
                                         //AddressText.setText("Latitude: "+ latitude + "\n" + "Longitude: "+ longitude);
@@ -238,7 +238,7 @@ public class RegisterationDetails7 extends AppCompatActivity {
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(RegisterationDetails7.this, e.toString(), Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(RegisterationDetails7.this, e.toString(), Toast.LENGTH_SHORT).show();
                                 }
                             });
 
@@ -269,7 +269,7 @@ public class RegisterationDetails7 extends AppCompatActivity {
 
                 try {
                     LocationSettingsResponse response = task.getResult(ApiException.class);
-                    Toast.makeText(RegisterationDetails7.this, "GPS is already tured on", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(RegisterationDetails7.this, "GPS is already tured on", Toast.LENGTH_SHORT).show();
 
 
                 } catch (ApiException e) {
@@ -345,7 +345,7 @@ public class RegisterationDetails7 extends AppCompatActivity {
 
                 String currentUid= FirebaseAuth.getInstance().getCurrentUser().getUid();
                 reference.child(currentUid).setValue(userDetails);
-                Toast.makeText(RegisterationDetails7.this, "Profile Created", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(RegisterationDetails7.this, "Profile Created", Toast.LENGTH_SHORT).show();
             }
         });
     }

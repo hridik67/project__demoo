@@ -32,7 +32,7 @@ import com.rilixtech.widget.countrycodepicker.CountryCodePicker;
 import java.util.concurrent.TimeUnit;
 
 public class LoginPhoneActivity extends AppCompatActivity {
-    EditText phoneNumber,otp1,otp2,otp3,otp4,otp5,otp6;
+    EditText phoneNumber,otp1,otp2,otp3,otp4,otp5,otp6,otp_text;
     TextView resendotp,textmobilenumbershow;
     MaterialButton sendOtp,verifyOtp;
     static String countrycode="+91";
@@ -67,6 +67,7 @@ public class LoginPhoneActivity extends AppCompatActivity {
             }
         });
         phoneNumber=findViewById(R.id.phoneNumber);
+        otp_text=findViewById(R.id.otp);
         progressBarsendOtp=findViewById(R.id.progressbar_sending_otp);
         progressBarverifyOtp=findViewById(R.id.progressbar_verify_otp);
         resendotp=findViewById(R.id.textresendotp);
@@ -77,7 +78,7 @@ public class LoginPhoneActivity extends AppCompatActivity {
                 sendOtp("resend");
             }
         });
-        otp1=findViewById(R.id.otp1);
+        /*otp1=findViewById(R.id.otp1);
         otp2=findViewById(R.id.otp2);
         otp3=findViewById(R.id.otp3);
         otp4=findViewById(R.id.otp4);
@@ -178,25 +179,26 @@ public class LoginPhoneActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
 
             }
-        });
+        });*/
         sendOtp =findViewById(R.id.sendOtp);
         verifyOtp =findViewById(R.id.verifyotp);
         verifyOtp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(number!=null) {
-                    otp=otp1.getText().toString()+otp2.getText().toString()+otp3.getText().toString()+otp4.getText().toString()+otp5.getText().toString()+otp6.getText().toString();
+                    otp=otp_text.getText().toString();
+                    //otp=otp1.getText().toString()+otp2.getText().toString()+otp3.getText().toString()+otp4.getText().toString()+otp5.getText().toString()+otp6.getText().toString();
                     if (otp.length() > 0) {
                         progressBarverifyOtp.setVisibility(View.VISIBLE);
                         verifyOtp.setVisibility(View.INVISIBLE);
-                        Toast.makeText(LoginPhoneActivity.this, "otp is "+otp, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(LoginPhoneActivity.this, "otp is "+otp, Toast.LENGTH_SHORT).show();
                         verifyotp(otp);
                     }
                     else {
-                        Toast.makeText(LoginPhoneActivity.this, "Enter the otp to verify it", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(LoginPhoneActivity.this, "Enter the otp to verify it", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(LoginPhoneActivity.this, "Enter the number first", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(LoginPhoneActivity.this, "Enter the number first", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -206,11 +208,11 @@ public class LoginPhoneActivity extends AppCompatActivity {
                 number=null;
                 number=countrycode+phoneNumber.getText().toString();
                 if (phoneNumber.getText().toString().length()>0){
-                    Toast.makeText(LoginPhoneActivity.this, number, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(LoginPhoneActivity.this, number, Toast.LENGTH_SHORT).show();
                     sendOtp("send");
                 }
                 else {
-                    Toast.makeText(LoginPhoneActivity.this, "Enter the Phone number for verification", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(LoginPhoneActivity.this, "Enter the Phone number for verification", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -255,7 +257,7 @@ public class LoginPhoneActivity extends AppCompatActivity {
 
         @Override
         public void onVerificationFailed(FirebaseException e) {
-            Toast.makeText(LoginPhoneActivity.this, "Verification Failed,Try Again", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(LoginPhoneActivity.this, "Verification Failed,Try Again", Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -268,7 +270,7 @@ public class LoginPhoneActivity extends AppCompatActivity {
             progressBarsendOtp.setVisibility(View.INVISIBLE);
             sendOtp.setVisibility(View.VISIBLE);
             textmobilenumbershow.setText("Please enter the 6-digit OTP sent to "+ number);
-            Toast.makeText(LoginPhoneActivity.this, "Code Sent to your number "+ number, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(LoginPhoneActivity.this, "Code Sent to your number "+ number, Toast.LENGTH_SHORT).show();
         }
     };
 
@@ -289,7 +291,7 @@ public class LoginPhoneActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<String> task) {
                                     checkUserDetails(task.getResult());
-                                    Toast.makeText(LoginPhoneActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(LoginPhoneActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -299,7 +301,7 @@ public class LoginPhoneActivity extends AppCompatActivity {
     private void checkUserDetails(String token) {
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser != null) {
-            Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show();
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("UserProfileDetails");
             reference.child(currentUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -308,7 +310,7 @@ public class LoginPhoneActivity extends AppCompatActivity {
                         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("UserProfileDetails");
                         currentUser = FirebaseAuth.getInstance().getCurrentUser();
                         reference.child(currentUser.getUid()).child("chattoken").setValue(token);
-                        Toast.makeText(LoginPhoneActivity.this, snapshot.getKey().toString(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(LoginPhoneActivity.this, snapshot.getKey().toString(), Toast.LENGTH_SHORT).show();
                         Intent intent= new Intent(LoginPhoneActivity.this,SwipingActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
